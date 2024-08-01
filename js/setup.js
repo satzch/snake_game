@@ -42,4 +42,17 @@ const snake = {
         this.vel.y = vel_y;
     }
 };
-snake.draw();
+
+window.addEventListener("keydown", (e) => {
+    if (e.key == "ArrowUp") {
+        snake.setVel(0, -5);
+    } else if (e.key == "ArrowDown") {
+        snake.setVel(0, 5);
+    }
+
+    if (e.key == "ArrowLeft") {
+        snake.setVel(-5, 0);   
+    } else if (e.key == "ArrowRight") {
+        snake.setVel(5, 0);
+    }
+});
