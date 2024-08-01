@@ -13,8 +13,8 @@ canvas.height = SCREEN_HEIGHT;
 let snake_speed = 20;
 const snake = {
     pos: {
-        x: Math.random() * SCREEN_WIDTH/2 + SCREEN_WIDTH/4,
-        y: Math.random() * SCREEN_HEIGHT/2 + SCREEN_HEIGHT/4
+        x: Math.floor(Math.random() * (SCREEN_WIDTH/40)) * 20 + SCREEN_WIDTH/4 + 10,
+        y: Math.floor(Math.random() * (SCREEN_HEIGHT/40)) * 20 + SCREEN_HEIGHT/4
     },
     vel: {
         x: snake_speed,
@@ -44,6 +44,7 @@ const snake = {
         this.vel.y = vel_y;
     }
 };
+
 
 window.addEventListener("keydown", (e) => {
     if (e.key == "ArrowUp") {
