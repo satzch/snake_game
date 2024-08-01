@@ -45,6 +45,27 @@ const snake = {
     }
 };
 
+const food = {
+    pos: {
+        x: Math.floor(Math.random() * (SCREEN_WIDTH/20)) * 20 + 10,
+        y: Math.floor(Math.random() * (SCREEN_HEIGHT/20)) * 20 + 10
+    },
+    color: "rgb(255, 255, 0)",
+    size: 20,
+    draw() {
+        ctx.fillStyle = this.color;
+        ctx.fillRect(
+            this.pos.x-(this.size/2),
+            this.pos.y-(this.size/2),
+            this.size,
+            this.size
+        );
+    },
+    update() {
+        this.pos.x = Math.floor(Math.random() * (SCREEN_WIDTH/20)) * 20 + 10;
+        this.pos.y = Math.floor(Math.random() * (SCREEN_HEIGHT/20)) * 20 + 10;
+    }
+}
 
 window.addEventListener("keydown", (e) => {
     if (e.key == "ArrowUp") {
