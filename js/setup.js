@@ -15,15 +15,11 @@ const snake = {
         y: Math.random() * SCREEN_HEIGHT/2 + SCREEN_HEIGHT/4
     },
     vel: {
-        x: 2,
-        y: 2
+        x: 20,
+        y: 0
     },
     size: 20,
     color: "rgb(255, 100, 200)",
-    setPos(pos_x, pos_y) {
-        this.pos.x = pos_x;
-        this.pos.y = pos_y;
-    },
     draw() {
         ctx.fillStyle = this.color;
         ctx.fillRect(
@@ -36,6 +32,14 @@ const snake = {
     update() {
         this.pos.x += this.vel.x;
         this.pos.y += this.vel.y;
+    },
+    setPos(pos_x, pos_y) {
+        this.pos.x = pos_x;
+        this.pos.y = pos_y;
+    },
+    setVel(vel_x, vel_y) {
+        this.vel.x = vel_x;
+        this.vel.y = vel_y;
     }
 };
 snake.draw();
