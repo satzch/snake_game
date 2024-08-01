@@ -9,13 +9,15 @@ canvas.width = SCREEN_WIDTH;
 canvas.height = SCREEN_HEIGHT;
 
 
+
+let snake_speed = 20;
 const snake = {
     pos: {
         x: Math.random() * SCREEN_WIDTH/2 + SCREEN_WIDTH/4,
         y: Math.random() * SCREEN_HEIGHT/2 + SCREEN_HEIGHT/4
     },
     vel: {
-        x: 20,
+        x: snake_speed,
         y: 0
     },
     size: 20,
@@ -25,8 +27,8 @@ const snake = {
         ctx.fillRect(
             this.pos.x-(this.size/2),
             this.pos.y-(this.size/2),
-            this.size/2,
-            this.size/2
+            this.size,
+            this.size
         );
     },
     update() {
@@ -45,14 +47,14 @@ const snake = {
 
 window.addEventListener("keydown", (e) => {
     if (e.key == "ArrowUp") {
-        snake.setVel(0, -5);
+        snake.setVel(0, -snake_speed);
     } else if (e.key == "ArrowDown") {
-        snake.setVel(0, 5);
+        snake.setVel(0, snake_speed);
     }
 
     if (e.key == "ArrowLeft") {
-        snake.setVel(-5, 0);   
+        snake.setVel(-snake_speed, 0);   
     } else if (e.key == "ArrowRight") {
-        snake.setVel(5, 0);
+        snake.setVel(snake_speed, 0);
     }
 });
