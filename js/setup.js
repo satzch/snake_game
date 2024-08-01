@@ -64,6 +64,12 @@ const food = {
     update() {
         this.pos.x = Math.floor(Math.random() * (SCREEN_WIDTH/20)) * 20 + 10;
         this.pos.y = Math.floor(Math.random() * (SCREEN_HEIGHT/20)) * 20 + 10;
+    },
+    checkCollision() {
+        if (Math.abs(this.pos.x - snake.pos.x) < 20  &&  Math.abs(this.pos.y - snake.pos.y) < 20)
+        {
+            this.update();
+        }
     }
 }
 
