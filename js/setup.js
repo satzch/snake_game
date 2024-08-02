@@ -22,6 +22,8 @@ const snake = {
     },
     size: 20,
     color: "rgb(255, 100, 200)",
+    next: null, // the next snake_body object
+    tail: this, // the end node or snake_body object
     draw() {
         ctx.fillStyle = this.color;
         ctx.fillRect(
@@ -53,6 +55,7 @@ const snake_body = {
     vel: snake.vel,
     size: snake.size,
     color: "rgb(255, 100, 200)",
+    next: null,
     draw() {
         ctx.fillStyle = this.color;
         ctx.fillRect(
