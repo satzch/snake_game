@@ -50,6 +50,9 @@ const snake = {
         if (this.next == null) {
             this.next = new_segment;
         }
+        else {
+            this.tail.next = new_segment;
+        }
         this.tail = new_segment;
     }
 };
