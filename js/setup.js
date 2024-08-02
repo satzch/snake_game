@@ -49,8 +49,7 @@ const snake = {
         let new_segment = Object.create(snake_body); 
         if (this.next == null) {
             this.next = new_segment;
-        }
-        else {
+        } else {
             this.tail.next = new_segment;
         }
         this.tail = new_segment;
@@ -113,6 +112,7 @@ const food = {
         if (Math.abs(this.pos.x - snake.pos.x) < 20  &&  Math.abs(this.pos.y - snake.pos.y) < 20)
         {
             this.update();
+            snake.addBodySegment();
         }
     }
 }
