@@ -1,5 +1,5 @@
 let continueGame = true;
-// continueGame = false;
+continueGame = false;
 function gameLoop()
 {
     // clear screen
