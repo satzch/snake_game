@@ -16,15 +16,15 @@ function gameLoop()
     temp.draw();
     while (temp.next != null) {
         temp = temp.next;
+        temp.update();
         temp.draw();
     }
     snake.draw();
-    // food.update();
     food.checkCollision();
     food.draw();
     if (continueGame)
     {
-        setTimeout(gameLoop, 500);
+        setTimeout(gameLoop, 200);
     }
 }
 

@@ -34,6 +34,10 @@ const snake = {
         );
     },
     update() {
+        if (this.next != null) {
+            this.next.setPrevPos(this.next.pos.x, this.next.pos.y);
+            this.next.setPos(this.pos.x, this.pos.y);
+        }
         this.pos.x += this.vel.x;
         this.pos.y += this.vel.y;
     },
@@ -60,6 +64,7 @@ const snake = {
     }
 };
 
+// returns the snake body segments as an object
 const snake_body = function() {
     return {
         pos: {
@@ -70,6 +75,10 @@ const snake_body = function() {
         size: snake.size,
         color: "rgb(255, 100, 200)",
         next: null,
+        prevPos: {
+            x: 0,
+            y: 0
+        },
         draw() {
             ctx.fillStyle = this.color;
             ctx.fillRect(
@@ -80,12 +89,21 @@ const snake_body = function() {
             );
         },
         update() {
-            this.pos.x += this.vel.x;
-            this.pos.y += this.vel.y;
+            if (this.next != null) {
+                this.next.setPrevPos(this.next.pos.x, this.next.pos.y);
+                this.next.setPos(this.prevPos.x, this.prevPos.y);
+            }
+
+            // this.pos.x += this.vel.x;
+            // this.pos.y += this.vel.y;
         },
         setPos(pos_x, pos_y) {
             this.pos.x = pos_x;
             this.pos.y = pos_y;
+        },
+        setPrevPos(pos_x, pos_y) {
+            this.prevPos.x = pos_x;
+            this.prevPos.y = pos_y;
         },
         setVel(vel_x, vel_y) {
             this.vel.x = vel_x;
