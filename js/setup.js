@@ -44,6 +44,13 @@ const snake = {
     setVel(vel_x, vel_y) {
         this.vel.x = vel_x;
         this.vel.y = vel_y;
+    },
+    addBodySegment() {
+        let new_segment = Object.create(snake_body); 
+        if (this.next == null) {
+            this.next = new_segment;
+        }
+        this.tail = new_segment;
     }
 };
 
