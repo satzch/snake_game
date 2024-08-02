@@ -45,46 +45,52 @@ const snake = {
         this.vel.x = vel_x;
         this.vel.y = vel_y;
     },
-    addBodySegment() {
-        let new_segment = Object.create(snake_body); 
+    addBodySegment(new_pos) {
+        let new_segment = new snake_body();
+        new_segment.setPos(this.pos.x, this.pos.y);
         if (this.next == null) {
             this.next = new_segment;
         } else {
-            this.tail.next = new_segment;
+            let curr = this.next;
+            while (curr.next != null) {
+                curr = curr.next;
+            }
+            curr.next = new_segment;
         }
-        this.tail = new_segment;
     }
 };
 
-const snake_body = {
-    pos: {
-        x: snake.pos.x,
-        y: snake.pos.y
-    },
-    vel: snake.vel,
-    size: snake.size,
-    color: "rgb(255, 100, 200)",
-    next: null,
-    draw() {
-        ctx.fillStyle = this.color;
-        ctx.fillRect(
-            this.pos.x-(this.size/2),
-            this.pos.y-(this.size/2),
-            this.size,
-            this.size
-        );
-    },
-    update() {
-        this.pos.x += this.vel.x;
-        this.pos.y += this.vel.y;
-    },
-    setPos(pos_x, pos_y) {
-        this.pos.x = pos_x;
-        this.pos.y = pos_y;
-    },
-    setVel(vel_x, vel_y) {
-        this.vel.x = vel_x;
-        this.vel.y = vel_y;
+const snake_body = function() {
+    return {
+        pos: {
+            x: snake.pos.x,
+            y: snake.pos.y
+        },
+        vel: snake.vel,
+        size: snake.size,
+        color: "rgb(255, 100, 200)",
+        next: null,
+        draw() {
+            ctx.fillStyle = this.color;
+            ctx.fillRect(
+                this.pos.x-(this.size/2),
+                this.pos.y-(this.size/2),
+                this.size,
+                this.size
+            );
+        },
+        update() {
+            this.pos.x += this.vel.x;
+            this.pos.y += this.vel.y;
+        },
+        setPos(pos_x, pos_y) {
+            this.pos.x = pos_x;
+            this.pos.y = pos_y;
+        },
+        setVel(vel_x, vel_y) {
+            this.vel.x = vel_x;
+            this.vel.y = vel_y;
+        }
     }
 };
 
@@ -112,7 +118,8 @@ const food = {
         if (Math.abs(this.pos.x - snake.pos.x) < 20  &&  Math.abs(this.pos.y - snake.pos.y) < 20)
         {
             this.update();
-            snake.addBodySegment();
+            console.log("Collision at: ", this.pos.x, " ", this.pos.y);
+            snake.addBodySegment(this.pos);
         }
     }
 }
