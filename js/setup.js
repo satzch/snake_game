@@ -48,7 +48,7 @@ const snake = {
         this.vel.x = vel_x;
         this.vel.y = vel_y;
     },
-    addBodySegment(new_pos) {
+    addBodySegment() {
         let new_segment = new snake_body();
         new_segment.setPos(this.pos.x, this.pos.y);
         if (this.next == null) {
@@ -70,7 +70,6 @@ const snake_body = function() {
             x: snake.pos.x,
             y: snake.pos.y
         },
-        vel: snake.vel,
         size: snake.size,
         color: "rgb(255, 100, 200)",
         next: null,
@@ -100,10 +99,6 @@ const snake_body = function() {
         setPrevPos(pos_x, pos_y) {
             this.prevPos.x = pos_x;
             this.prevPos.y = pos_y;
-        },
-        setVel(vel_x, vel_y) {
-            this.vel.x = vel_x;
-            this.vel.y = vel_y;
         }
     }
 };
@@ -133,7 +128,7 @@ const food = {
         {
             this.update();
             console.log("Collision at: ", this.pos.x, " ", this.pos.y);
-            snake.addBodySegment(this.pos);
+            snake.addBodySegment();
         }
     }
 }
