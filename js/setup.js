@@ -10,14 +10,14 @@ canvas.height = SCREEN_HEIGHT;
 
 
 
-let snake_speed = 20;
 const snake = {
     pos: {
         x: Math.floor(Math.random() * (SCREEN_WIDTH/40)) * 20 + SCREEN_WIDTH/4 + 10,
         y: Math.floor(Math.random() * (SCREEN_HEIGHT/40)) * 20 + SCREEN_HEIGHT/4
     },
+    speed: 20,
     vel: {
-        x: snake_speed,
+        x: 20,
         y: 0
     },
     size: 20,
@@ -137,14 +137,22 @@ const food = {
 
 window.addEventListener("keydown", (e) => {
     if (e.key == "ArrowUp") {
-        snake.setVel(0, -snake_speed);
+        if (!(snake.vel.y > 0) || snake.length == 1) {
+            snake.setVel(0, -snake.speed);
+        }
     } else if (e.key == "ArrowDown") {
-        snake.setVel(0, snake_speed);
+        if (!(snake.vel.y < 0) || snake.length == 1) {
+            snake.setVel(0, snake.speed);
+        }
     }
 
     if (e.key == "ArrowLeft") {
-        snake.setVel(-snake_speed, 0);   
+        if (!(snake.vel.x > 0) || snake.length == 1) {
+            snake.setVel(-snake.speed, 0);   
+        }
     } else if (e.key == "ArrowRight") {
-        snake.setVel(snake_speed, 0);
+        if (!(snake.vel.x < 0) || snake.length == 1) {
+            snake.setVel(snake.speed, 0);
+        }
     }
 });
