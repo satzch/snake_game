@@ -131,6 +131,11 @@ const food = {
     update() {
         this.pos.x = Math.floor(Math.random() * (SCREEN_WIDTH/20)) * 20 + 10;
         this.pos.y = Math.floor(Math.random() * (SCREEN_HEIGHT/20)) * 20 + 10;
+        // update the position again if the food is generated on the snake body
+        if (checkSnakeBodyCollision(this)) {
+            console.log("food relocated");
+            this.update();
+        }
     },
     checkCollision() {
         if (checkCollision(this, snake))
@@ -172,4 +177,16 @@ function checkCollision(a, b) {
     } else {
         return false;
     }
+}
+
+// check collision of argument with the snake body
+// returns true if the snake body collides with entity otherwise returns false
+function checkSnakeBodyCollision(entity) {
+    if (snake.next == null || entity == null) return false;
+    let temp = snake.next;
+    while (temp != null) {
+        if (checkCollision(temp, entity)) return true;
+        temp = temp.next;
+    }
+    return false;
 }
