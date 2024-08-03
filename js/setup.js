@@ -133,7 +133,7 @@ const food = {
         this.pos.y = Math.floor(Math.random() * (SCREEN_HEIGHT/20)) * 20 + 10;
     },
     checkCollision() {
-        if (Math.abs(this.pos.x - snake.pos.x) < 20  &&  Math.abs(this.pos.y - snake.pos.y) < 20)
+        if (checkCollision(this, snake))
         {
             this.update();
             console.log("Collision at: ", this.pos.x, " ", this.pos.y);
@@ -163,3 +163,13 @@ window.addEventListener("keydown", (e) => {
         }
     }
 });
+
+// checks for collision between two entities with pos and size attributes
+function checkCollision(a, b) {
+    if (Math.abs(a.pos.x - b.pos.x) < (a.size/2 + b.size/2)  &&  Math.abs(a.pos.y - b.pos.y) < (a.size/2 + b.size/2))
+    {
+        return true;
+    } else {
+        return false;
+    }
+}
