@@ -35,7 +35,6 @@ const snake = {
     },
     update() {
         if (this.next != null) {
-            this.next.setPrevPos(this.next.pos.x, this.next.pos.y);
             this.next.setPos(this.pos.x, this.pos.y);
         }
         this.pos.x += this.vel.x;
@@ -90,14 +89,11 @@ const snake_body = function() {
         },
         update() {
             if (this.next != null) {
-                this.next.setPrevPos(this.next.pos.x, this.next.pos.y);
                 this.next.setPos(this.prevPos.x, this.prevPos.y);
             }
-
-            // this.pos.x += this.vel.x;
-            // this.pos.y += this.vel.y;
         },
         setPos(pos_x, pos_y) {
+            this.setPrevPos(this.pos.x, this.pos.y);
             this.pos.x = pos_x;
             this.pos.y = pos_y;
         },
