@@ -24,6 +24,7 @@ const snake = {
     color: "rgb(255, 100, 200)",
     next: null, // the next snake_body object
     tail: this, // the end node or snake_body object
+    length: 1,
     draw() {
         ctx.fillStyle = this.color;
         ctx.fillRect(
@@ -60,6 +61,7 @@ const snake = {
             }
             curr.next = new_segment;
         }
+        this.length++;
     }
 };
 
