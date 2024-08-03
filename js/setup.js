@@ -21,7 +21,7 @@ const snake = {
         y: 0
     },
     size: 20,
-    color: "rgb(255, 100, 200)",
+    color: "rgb(150, 80, 150)",
     next: null, // the next snake_body object
     tail: this, // the end node or snake_body object
     length: 1,
@@ -82,6 +82,13 @@ const snake_body = function() {
         draw() {
             ctx.fillStyle = this.color;
             ctx.fillRect(
+                this.pos.x-(this.size/2),
+                this.pos.y-(this.size/2),
+                this.size,
+                this.size
+            );
+            ctx.fillStyle = snake.color;
+            ctx.strokeRect(
                 this.pos.x-(this.size/2),
                 this.pos.y-(this.size/2),
                 this.size,
