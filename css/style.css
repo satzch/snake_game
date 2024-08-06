@@ -52,6 +52,7 @@ body {
 }
 
 
+
 /******** UI Board ********/
 
 #ui-board {
@@ -91,6 +92,7 @@ body {
     font-weight: bold;
     font-size: 4em;
 }
+
 
 
 /******** UI Controls ********/
@@ -134,16 +136,39 @@ body {
 }
 
 
+
+/******** UI Menu ********/
+
 #ui-menu {
     position: relative;
     width: 33vw; 
 }
 
-#ui-menu > img {
+#ui-menu-box {
     position: absolute;
-    bottom: 10vh;
+    bottom: 100px;
     right: 4vw;
-    width: 400px;
-    height: 200px;
+    width: 300px;
+    height: 180px;
     transform: rotate(-20deg);
+    z-index: 0;
+}
+
+#ui-menu-box > img, #ui-menu-content {
+    position: inherit;
+    width: 100%;
+    height: 100%;
+}
+
+#ui-menu-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center ;
+    font-family: lonely-coffee;
+    font-size: 2em;
+}
+
+.ui-menus {
+    margin: 1vh 0;
 }
