@@ -3,8 +3,8 @@ const canvas = document.getElementById("canvas");
 
 const ctx = canvas.getContext("2d");
 
-const SCREEN_WIDTH = 480;
-const SCREEN_HEIGHT = 360;
+const SCREEN_WIDTH = 40 * 20;
+const SCREEN_HEIGHT = 40 * 11;
 canvas.width = SCREEN_WIDTH;
 canvas.height = SCREEN_HEIGHT;
 
