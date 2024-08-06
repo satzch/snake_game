@@ -37,21 +37,18 @@ body {
     width: 100vw;
     height: 100vh;
     display: flex;
-    /* display: grid;
-    grid-template-areas:
-    ". . board board . ."
-    ". . . . . ."
-    "controls controls . . menu menu"
-    "controls controls . . menu menu"; */
+    justify-content: space-around;
 }
 
+
+/******** UI Board ********/
+
 #ui-board {
-    /* grid-area: board; */
     position: relative;
+    width: 33vw;
+    height: 150px;
     display: flex;
     justify-content: space-around;
-    width: 33vw;
-    height: 200px;
 }
 
 #ui-board > img {
@@ -59,12 +56,32 @@ body {
     top: 3vh;
     width: 600px;
     height: 150px;
-    z-index: -1;
+}
+
+#ui-board-content {
+    width: 600px;
+    height: 150px;
+    margin-top: 3vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    /* border: 2px solid black; */
+    z-index: 2;
+}
+
+#ui-board-play > img {
+    width: 100px;
+    height: 100px;
+}
+
+#ui-board-score {
+    width: 300px;
+    font-weight: bold;
+    font-size: 3em;
 }
 
 
 #ui-controls {
-    /* grid-area: controls; */
     flex-grow: 1;
     position: relative;
     width: 33vw;
@@ -73,14 +90,14 @@ body {
 #ui-controls > img {
     position: absolute;
     bottom: 0;
-    left: 0;
+    left: -1vw;
     width: 400px;
     height: 600px;
+    transform: rotate(-10deg);
 }
 
 
 #ui-menu {
-    /* grid-area: menu; */
     position: relative;
     width: 33vw; 
 }
@@ -91,4 +108,5 @@ body {
     right: 4vw;
     width: 400px;
     height: 200px;
+    transform: rotate(-20deg);
 }
