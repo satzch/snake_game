@@ -38,6 +38,7 @@ body {
     width: 100vw;
     height: 120vh;
     top: -10vh;
+    opacity: 95%;
 }
 
 #UI {
