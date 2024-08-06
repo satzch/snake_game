@@ -9,8 +9,34 @@ body {
     justify-content: center;
     align-items: center;
     height: 90vh;
+    overflow: hidden;
 }
 
 #canvas {
     border: 2px solid black;
+    margin-top: 10vh;
+}
+
+
+
+/***************************/
+/******** UI STYLES ********/
+/***************************/
+
+#UI {
+    position: absolute;
+    display: grid;
+}
+
+#bg-img {
+    position: absolute;
+    width: 100vw;
+    height: 120vh;
+    top: -10vh;
+}
+
+#board {
+    width: 30vw;
+    height: 15vh;
+    top: 10px;
 }
