@@ -23,11 +23,6 @@ body {
 /******** UI STYLES ********/
 /***************************/
 
-#UI {
-    position: absolute;
-    display: grid;
-}
-
 #bg-img {
     position: absolute;
     width: 100vw;
@@ -35,8 +30,56 @@ body {
     top: -10vh;
 }
 
-#board {
-    width: 30vw;
-    height: 15vh;
-    top: 10px;
+#UI {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    /* display: grid;
+    grid-template-areas:
+        ". . board board . ."
+        ". . . . . ."
+        "controls controls . . menu menu"
+        "controls controls . . menu menu"; */
+}
+
+#ui-board {
+    /* grid-area: board; */
+    position: absolute;
+    top: 3vh;
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    height: 200px;
+}
+
+#ui-board > img {
+    width: 600px;
+    height: 150px;
+}
+
+
+#ui-controls {
+    /* grid-area: controls; */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 400px;
+    height: 600px;
+}
+
+#ui-controls > img {
+    width: 100%;
+    height: 100%;
+}
+
+
+#ui-menu {
+    /* grid-area: menu; */
+    position: absolute;
+    bottom: 10vh;
+    right: 4vw;
+    width: 400px;
+    height: 200px; 
 }
