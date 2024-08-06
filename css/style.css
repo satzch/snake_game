@@ -4,6 +4,15 @@
     box-sizing: border-box;
 }
 
+@font-face {
+    font-family: lonely-coffee;
+    src: url("../assets/lonely_coffee/Lonely Coffee.ttf");
+}
+@font-face {
+    font-family: keep-cheese;
+    src: url("../assets/keep_cheese/Keep Cheese.ttf");
+}
+
 body {
     display: flex;
     justify-content: center;
@@ -16,6 +25,7 @@ body {
     border: 2px solid black;
     margin-top: 10vh;
 }
+
 
 
 
@@ -75,9 +85,10 @@ body {
 }
 
 #ui-board-score {
-    width: 300px;
+    width: 350px;
+    font-family: lonely-coffee;
     font-weight: bold;
-    font-size: 3em;
+    font-size: 4em;
 }
 
 
