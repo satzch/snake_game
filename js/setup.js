@@ -10,7 +10,7 @@ canvas.height = SCREEN_HEIGHT;
 
 const Globals = {
     score: 0,
-    continueGame: true,
+    continueGame: false,
     gameOver: false,
 }
 const Settings = {
