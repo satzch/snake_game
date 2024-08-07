@@ -7,7 +7,7 @@ const SCREEN_WIDTH = 40 * 20;
 const SCREEN_HEIGHT = 40 * 11;
 canvas.width = SCREEN_WIDTH;
 canvas.height = SCREEN_HEIGHT;
-
+var SCORE = 0;
 
 
 const snake = {

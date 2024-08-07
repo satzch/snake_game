@@ -25,6 +25,7 @@ function gameLoop()
     gameOver = checkSnakeBodyCollision(snake);
     food.checkCollision();
     food.draw();
+    updateUI();
     if (continueGame)
     {
         setTimeout(gameLoop, 200);
