@@ -50,17 +50,18 @@
 
 
         <div id="ui-settings" class="hide">
-            <img src="" alt="">
             <div id="ui-settings-content">
+                <h2 id="ui-settings-heading">Settings</h2>
+                <img src="assets/board_small.png" alt="">
                 <div class="settings-options">
-                    <label for="volume">Sound</label>
-                    <input type="range" name="volume" id="settings-options-sound" step="2" min="0" max="10">
+                    <span>Sound</span>
+                    <input type="range" name="volume" id="settings-options-sound" step="2" min="0" max="10" value="6">
                 </div>
                 <div class="settings-options">
-                    <label for="grid">Show Grid</label>
+                    <span>Show Grid</span>
                     <input type="checkbox" name="grid" id="settings-options-grid" checked>
                 </div>
-                <div class="settings-options">Close Settings</div>
+                <div class="settings-options" id="settings-options-close">Close Settings</div>
             </div>
         </div>
 
