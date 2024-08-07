@@ -52,5 +52,5 @@ settings_option_sound.addEventListener("change", (e) => {
 })
 
 settings_option_grid.addEventListener("click", (e) => {
-    Settings.grid = settings_option_grid,checked;
+    Settings.gridOn = settings_option_grid.checked;
 })
