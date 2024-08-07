@@ -11,5 +11,5 @@ function updateUI() {
 }
 
 function updateScore() {
-    score.innerText = SCORE;
+    score.innerText = Globals.score;
 }

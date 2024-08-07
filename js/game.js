@@ -1,6 +1,5 @@
-let continueGame = true;
+
 // continueGame = false;
-let gameOver = false;
 function gameLoop()
 {
     // if (gameOver) return;
@@ -13,20 +12,20 @@ function gameLoop()
             ctx.strokeRect(i*20, j*20, 20, 20);
         }
     }
-    if (!gameOver) snake.update();
+    if (!Globals.gameOver) snake.update();
     let temp = snake;
     temp.draw();
     while (temp.next != null) {
         temp = temp.next;
-        if (!gameOver) temp.update();
+        if (!Globals.gameOver) temp.update();
         temp.draw();
     }
     snake.draw();
-    gameOver = checkSnakeBodyCollision(snake);
+    Globals.gameOver = checkSnakeBodyCollision(snake);
     food.checkCollision();
     food.draw();
     updateUI();
-    if (continueGame)
+    if (Globals.continueGame)
     {
         setTimeout(gameLoop, 200);
     }
