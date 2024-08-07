@@ -3,7 +3,6 @@ let continueGame = true;
 let gameOver = false;
 function gameLoop()
 {
-    // if (gameOver) return;
     // clear screen
     ctx.clearRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     drawGrid("black");
