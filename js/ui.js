@@ -44,10 +44,16 @@ window.addEventListener("keypress", (e) => {
     if (e.code == "Space") togglePausePlay();
 });
 
-settings_window_menu_option.addEventListener("click", toggleSettingsWindow);
+settings_window_menu_option.addEventListener("click", () => {
+    toggleSettingsWindow();
+    Globals.continueGame = false;
+});
 settings_close_btn.addEventListener("click", toggleSettingsWindow);
 
-credits_window_menu_option.addEventListener("click", toggleCreditsWindow);
+credits_window_menu_option.addEventListener("click", () => {
+    toggleCreditsWindow();
+    Globals.continueGame = false;
+});
 credits_close_btn.addEventListener("click", toggleCreditsWindow);
 
 settings_option_sound.addEventListener("change", (e) => {
