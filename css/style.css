@@ -48,7 +48,7 @@ body {
     width: 100vw;
     height: 100vh;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 
@@ -172,3 +172,12 @@ body {
 .ui-menus {
     margin: 1vh 0;
 }
+
+.ui-menus:hover {
+    text-shadow: 0 0 5px white;
+}
+
+
+
+/* TODOS */
+/* FIX THE UI AND CONNECT THE EVENT LISTENERS AND ALL */
