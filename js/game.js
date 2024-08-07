@@ -18,11 +18,20 @@ function gameLoop()
     food.checkCollision();
     food.draw();
     updateUI();
-    // if (Globals.continueGame)
-    // {
-        // setTimeout(gameLoop, 200);
-        requestAnimationFrame(gameLoop);
-    // }
+    // setTimeout(gameLoop, 200);
+    if (!Globals.continueGame) {
+        pauseLoop();
+        return;
+    }
+    requestAnimationFrame(gameLoop);
+}
+
+function pauseLoop() {
+    if (Globals.continueGame) {
+        gameLoop();
+        return;
+    }
+    requestAnimationFrame(pauseLoop);
 }
 
 gameLoop();

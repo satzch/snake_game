@@ -40,6 +40,9 @@ function togglePausePlay() {
 }
 
 play_pause_btn.addEventListener("click", togglePausePlay);
+window.addEventListener("keypress", (e) => {
+    if (e.code == "Space") togglePausePlay();
+});
 
 settings_window_menu_option.addEventListener("click", toggleSettingsWindow);
 settings_close_btn.addEventListener("click", toggleSettingsWindow);
@@ -49,8 +52,8 @@ credits_close_btn.addEventListener("click", toggleCreditsWindow);
 
 settings_option_sound.addEventListener("change", (e) => {
     Settings.volume = e.target.value;
-})
+});
 
 settings_option_grid.addEventListener("click", (e) => {
     Settings.gridOn = settings_option_grid.checked;
-})
+});
