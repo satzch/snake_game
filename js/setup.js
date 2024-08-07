@@ -190,3 +190,16 @@ function checkSnakeBodyCollision(entity) {
     }
     return false;
 }
+
+
+// Draws grid
+function drawGrid(color) {
+    ctx.fillStyle = "black";
+    for (let i = 0; i < SCREEN_WIDTH; i++ )
+        {
+            for (let j = 0; j < SCREEN_HEIGHT; j++)
+            {
+                ctx.strokeRect(i*20, j*20, 20, 20);
+            }
+        }
+}

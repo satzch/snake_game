@@ -6,13 +6,7 @@ function gameLoop()
     // if (gameOver) return;
     // clear screen
     ctx.clearRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-    for (let i = 0; i < SCREEN_WIDTH; i++ )
-    {
-        for (let j = 0; j < SCREEN_HEIGHT; j++)
-        {
-            ctx.strokeRect(i*20, j*20, 20, 20);
-        }
-    }
+    drawGrid("black");
     if (!gameOver) snake.update();
     let temp = snake;
     temp.draw();
