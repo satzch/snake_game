@@ -61,7 +61,7 @@ body {
 #ui-board {
     position: relative;
     width: 33vw;
-    height: 150px;
+    height: 100px;
     display: flex;
     justify-content: space-around;
 }
@@ -70,12 +70,12 @@ body {
     position: absolute;
     top: 3vh;
     width: 600px;
-    height: 150px;
+    height: 100px;
 }
 
 #ui-board-content {
     width: 600px;
-    height: 150px;
+    height: 100px;
     margin-top: 3vh;
     display: flex;
     justify-content: space-around;
@@ -85,8 +85,8 @@ body {
 }
 
 #ui-board-play > img {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
 }
 
 #ui-board-score {
