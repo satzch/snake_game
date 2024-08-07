@@ -4,6 +4,7 @@ function gameLoop()
 {
     // if (gameOver) return;
     // clear screen
+    // if (!Globals.continueGame) requestAnimationFrame(gameLoop);   
     ctx.clearRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     for (let i = 0; i < SCREEN_WIDTH; i++ )
     {
@@ -25,10 +26,11 @@ function gameLoop()
     food.checkCollision();
     food.draw();
     updateUI();
-    if (Globals.continueGame)
-    {
-        setTimeout(gameLoop, 200);
-    }
+    // if (Globals.continueGame)
+    // {
+        // setTimeout(gameLoop, 200);
+        requestAnimationFrame(gameLoop);
+    // }
 }
 
 gameLoop();
