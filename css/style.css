@@ -4,13 +4,331 @@
     box-sizing: border-box;
 }
 
+@font-face {
+    font-family: lonely-coffee;
+    src: url("../assets/lonely_coffee/Lonely Coffee.ttf");
+}
+@font-face {
+    font-family: keep-cheese;
+    src: url("../assets/keep_cheese/Keep Cheese.ttf");
+}
+
 body {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 90vh;
+    overflow: hidden;
 }
 
 #canvas {
     border: 2px solid black;
+    margin-top: 10vh;
+}
+
+.hide {
+    display: none;
+}
+
+.interactable-ui-options:hover {
+    transform: scale(1.06);
+    transition: scale 40ms;
+}
+
+.interactable-ui-options:active {
+    transform: scale(0.95);
+}
+
+
+/***************************/
+/******** UI STYLES ********/
+/***************************/
+
+#bg-img {
+    position: absolute;
+    width: 100vw;
+    height: 120vh;
+    top: -10vh;
+    opacity: 95%;
+}
+
+#UI {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+/******** UI Board ********/
+
+#ui-board {
+    position: relative;
+    width: 33vw;
+    height: 100px;
+    display: flex;
+    justify-content: space-around;
+}
+
+#ui-board > img {
+    position: absolute;
+    top: 3vh;
+    width: 600px;
+    height: 100px;
+}
+
+#ui-board-content {
+    width: 600px;
+    height: 100px;
+    margin-top: 3vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    /* border: 2px solid black; */
+    z-index: 2;
+}
+
+#ui-board-play > img {
+    width: 80px;
+    height: 80px;
+}
+
+#ui-board-play > img:hover {
+    transform: scale(1.05);
+    transition: scale 30ms;
+}
+
+#ui-board-play > img:active {
+    transform: scale(0.95);
+}
+
+#ui-board-score {
+    width: 350px;
+    font-family: lonely-coffee;
+    font-weight: bold;
+    font-size: 4em;
+}
+
+
+
+/******** UI Controls ********/
+
+#ui-controls {
+    flex-grow: 1;
+    position: relative;
+    width: 33vw;
+}
+
+#ui-controls-box {
+    position: absolute;
+    bottom: 0;
+    left: -5px;
+    width: 360px;
+    height: 600px;
+    transform: rotate(-10deg);
+    font-family: lonely-coffee;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#ui-controls-box > img {
+    width: 100%;
+    height: 100%;
+    position: inherit;
+    z-index: -1;
+}
+
+#ui-controls-heading {
+    position: relative;
+    font-size: 3em;
+    top: -1vh;
+}
+
+.ui-controls-info {
+    margin: 2em 0;
+    font-size: 1.4em;
+    text-shadow: 0 0 5px white;
+}
+
+
+
+/******** UI Menu ********/
+
+#ui-menu {
+    position: relative;
+    width: 33vw; 
+}
+
+#ui-menu-box {
+    position: absolute;
+    bottom: 100px;
+    right: 4vw;
+    width: 300px;
+    height: 180px;
+    transform: rotate(-20deg);
+    z-index: 0;
+}
+
+#ui-menu-box > img, #ui-menu-content {
+    position: inherit;
+    width: 100%;
+    height: 100%;
+}
+
+#ui-menu-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center ;
+    font-family: lonely-coffee;
+    font-size: 2em;
+}
+
+.ui-menus {
+    margin: 1vh 0;
+}
+
+.ui-menus:hover {
+    text-shadow: 0 0 5px white;
+}
+
+
+
+/******** UI Settings ********/
+
+#ui-settings {
+    position: inherit;
+    width: 100%;
+    height: 100%;
+    z-index: 6;
+}
+
+#ui-settings-heading {
+    position: relative;
+    font-size: 2.5em;
+    top: -0.5em;
+}
+
+#ui-settings-content > img {
+    position: absolute;
+    width: max(40%, 400px);
+    height: max(60%, 600px);
+    z-index: -1;
+}
+
+#ui-settings-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: lonely-coffee;
+    font-size: 3em;
+}
+
+.settings-options {
+    margin: 2vh;
+    width: 30%;
+}
+
+.settings-options > span {
+    margin-right: 20px;
+}
+
+.settings-options > input {
+    height: 3em;
+}
+
+.settings-options > input[type="checkbox"] {
+    appearance: none;
+    position: relative;
+    width: 3em;
+    height: 3em;
+    border: 8px solid black;
+    color: black;
+    border-radius: 10px;
+    vertical-align: -2px;
+}
+
+.settings-options > input[type="checkbox"]::before {
+    content: "✔️";
+    position: absolute;
+    font-size: 3.5em;
+    left: -0.25em;
+    bottom: -0.2em;
+    visibility: hidden;
+}
+
+.settings-options > input[type="checkbox"]:checked::before {
+    visibility: visible;
+}
+
+.settings-options:hover {
+    text-shadow: 0 0 20px white;
+}
+
+#settings-options-close {
+    margin-top: 30px;
+    border: 6px solid black;
+    border-radius: 8px;
+    padding: 5px;
+    text-align: center;
+}
+
+#settings-options-close:hover {
+    text-shadow: 0 0 10px white;
+}
+
+
+
+/******** UI Credits ********/
+
+#ui-credits {
+    position: inherit;
+    width: 100%;
+    height: 100%;
+    z-index: 6;
+}
+
+#ui-credits-heading {
+    position: relative;
+    font-size: 2.5em;
+    top: -0.5em;
+}
+
+#ui-credits-content > img {
+    position: absolute;
+    width: max(40%, 400px);
+    height: max(60%, 600px);
+    z-index: -1;
+}
+
+#ui-credits-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: lonely-coffee;
+    font-size: 2em;
+}
+
+.ui-credits-section {
+    width: 60%;
+}
+
+#credits-close {
+    margin-top: 30px;
+    border: 6px solid black;
+    border-radius: 8px;
+    padding: 5px;
+}
+
+#credits-close:hover {
+    text-shadow: 0 0 10px white;
 }

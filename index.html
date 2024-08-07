@@ -7,8 +7,105 @@
     <link rel="stylesheet" href="./css/style.css" />
 </head>
 <body>
+    <img src="./assets/bg.png" id="bg-img" />
+    <div id="UI">
+        <div id="ui-controls">
+            <div id="ui-controls-box">
+                <img src="assets/controls.png">
+                <h2 id="ui-controls-heading">Controls</h2>
+                <div id="ui-controls-content">
+                    <div class="ui-controls-info">"Move Up - Up Arrow</div>
+                    <div class="ui-controls-info">"Move Down - Down Arrow</div>
+                    <div class="ui-controls-info">Move Left - Left Arrow</div>
+                    <div class="ui-controls-info">Move Right - Right Arrow</div>
+                    <div class="ui-controls-info">Play/Pause - Space</div>
+                    <div class="ui-controls-info">Restart - R</div>
+                </div>
+            </div>
+        </div>
+        
+
+        <div id="ui-board">
+            <img src="assets/board_small.png">
+            <div id="ui-board-content">
+                <div id="ui-board-play">
+                    <img src="assets/play.png" id="play-img">
+                    <img src="assets/pause.png" id="pause-img" class="hide">
+                </div>
+                <div id="ui-board-score">
+                    Score: <span id="score-points">0</span>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="ui-menu">
+            <div id="ui-menu-box">
+                <img src="assets/menu.png">
+                <div id="ui-menu-content">
+                    <div class="ui-menus" id="ui-menu-option-settings">Settings</div>
+                    <div class="ui-menus" id="ui-menu-option-credits">Credits</div>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="ui-settings" class="hide">
+            <div id="ui-settings-content">
+                <h2 id="ui-settings-heading">Settings</h2>
+                <img src="assets/board_small.png" alt="">
+
+                <div class="settings-options">
+                    <span>Sound</span>
+                    <input type="range" name="volume" id="settings-options-sound" step="2" min="0" max="10" value="6">
+                </div>
+
+                <div class="settings-options">
+                    <span>Show Grid</span>
+                    <input type="checkbox" name="grid" id="settings-options-grid" checked>
+                </div>
+
+                <div class="settings-options interactable-ui-options" id="settings-options-close">Close Settings</div>
+            </div>
+        </div>
+
+
+        <div id="ui-credits" class="hide">
+            <div id="ui-credits-content">
+                <h2 id="ui-credits-heading">Credits</h2>
+                <img src="assets/board_small.png" alt="">
+
+                <div class="credits-section">
+                    <h3>Code</h3>
+                    <ul><li>Satyam Karmakar</li></ul>
+                </div>
+
+                <div class="credits-section">
+                    <h3>Art Used</h3>
+                    <ul>
+                        <li>Font</li>
+                        <li>Leaves</li>
+                        <li>Boards</li>
+                        <li>Stick Image</li>
+                    </ul>
+                </div>
+
+                <div class="credits-section">
+                    <h3>Sound</h3>
+                    <ul>
+                        <li>Sound Effects</li>
+                    </ul>
+                </div>
+
+                <div class="credits-section  interactable-ui-options" id="credits-close">
+                    Close
+                </div>
+            </div>
+        </div>
+    </div>
     <canvas id="canvas"></canvas>
     <script src="./js/setup.js" defer></script>
+    <script src="./js/ui.js" defer></script>
     <script src="./js/snake.js" defer></script>
     <script src="./js/game.js" defer></script>
 </body>
