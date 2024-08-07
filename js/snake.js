@@ -39,6 +39,7 @@ const snake = {
         this.vel.y = vel_y;
     },
     addBodySegment() {
+        Globals.score += 5;
         let new_segment = new snake_body();
         new_segment.setPos(this.pos.x, this.pos.y);
         if (this.next == null) {
