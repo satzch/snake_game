@@ -1,8 +1,8 @@
 // snake head object
 const snake = {
     pos: {
-        x: Math.floor(Math.random() * (SCREEN_WIDTH/40)) * 20 + SCREEN_WIDTH/4 + 10,
-        y: Math.floor(Math.random() * (SCREEN_HEIGHT/40)) * 20 + SCREEN_HEIGHT/4
+        x: generateRandomInt(SCREEN_WIDTH/4, SCREEN_WIDTH*3/4) + 10,
+        y: generateRandomInt(SCREEN_HEIGHT/4, SCREEN_HEIGHT*3/4)
     },
     speed: 20,
     vel: {
@@ -103,8 +103,8 @@ const snake_body = function() {
 
 const food = {
     pos: {
-        x: Math.floor(Math.random() * (SCREEN_WIDTH/20)) * 20 + 10,
-        y: Math.floor(Math.random() * (SCREEN_HEIGHT/20)) * 20 + 10
+        x: generateRandomInt(0, SCREEN_WIDTH) + 10,
+        y: generateRandomInt(0, SCREEN_HEIGHT) + 10
     },
     color: "rgb(255, 255, 0)",
     size: 20,
@@ -118,8 +118,8 @@ const food = {
         );
     },
     update() {
-        this.pos.x = Math.floor(Math.random() * (SCREEN_WIDTH/20)) * 20 + 10;
-        this.pos.y = Math.floor(Math.random() * (SCREEN_HEIGHT/20)) * 20 + 10;
+        this.pos.x = generateRandomInt(0, SCREEN_WIDTH) + 10;
+        this.pos.y = generateRandomInt(0, SCREEN_HEIGHT) + 10;
         // update the position again if the food is generated on the snake body
         if (checkSnakeBodyCollision(this)) {
             console.log("food relocated");

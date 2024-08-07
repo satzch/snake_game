@@ -8,6 +8,11 @@ const SCREEN_HEIGHT = 360;
 canvas.width = SCREEN_WIDTH;
 canvas.height = SCREEN_HEIGHT;
 
+const Settings = {
+    volume: 6,
+    gridOn: true,
+}
+
 // Draws grid
 function drawGrid(color) {
     ctx.fillStyle = "black";
@@ -19,3 +24,8 @@ function drawGrid(color) {
             }
         }
 }
+
+// generate random integer between min and max
+function generateRandomInt(min, max) {
+    return Math.floor(Math.random() * (max-min)/20) * 20 + min;
+} 
