@@ -30,6 +30,14 @@ body {
     display: none;
 }
 
+.interactable-ui-options:hover {
+    transform: scale(1.06);
+    transition: scale 40ms;
+}
+
+.interactable-ui-options:active {
+    transform: scale(0.95);
+}
 
 
 /***************************/
@@ -87,6 +95,15 @@ body {
 #ui-board-play > img {
     width: 80px;
     height: 80px;
+}
+
+#ui-board-play > img:hover {
+    transform: scale(1.05);
+    transition: scale 30ms;
+}
+
+#ui-board-play > img:active {
+    transform: scale(0.95);
 }
 
 #ui-board-score {
@@ -255,6 +272,18 @@ body {
     text-shadow: 0 0 20px white;
 }
 
+#settings-options-close {
+    margin-top: 30px;
+    border: 6px solid black;
+    border-radius: 8px;
+    padding: 5px;
+    text-align: center;
+}
+
+#settings-options-close:hover {
+    text-shadow: 0 0 10px white;
+}
+
 
 
 /******** UI Credits ********/
@@ -302,6 +331,4 @@ body {
 
 #credits-close:hover {
     text-shadow: 0 0 10px white;
-    transform: scale(1.1);
-    transition-duration: 60ms;
 }
