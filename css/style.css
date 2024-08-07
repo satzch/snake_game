@@ -26,6 +26,9 @@ body {
     margin-top: 10vh;
 }
 
+.hide {
+    display: none;
+}
 
 
 
@@ -179,5 +182,40 @@ body {
 
 
 
-/* TODOS */
-/* FIX THE UI AND CONNECT THE EVENT LISTENERS AND ALL */
+/******** UI Settings ********/
+
+#ui-settings {
+    position: inherit;
+    width: 100%;
+    height: 100%;
+}
+
+#ui-settings-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: lonely-coffee;
+}
+
+
+
+/******** UI Credits ********/
+
+#ui-credits {
+    position: inherit;
+    width: 100%;
+    height: 100%;
+}
+
+#ui-credits-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: lonely-coffee;
+}
