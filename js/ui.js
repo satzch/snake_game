@@ -39,6 +39,12 @@ function togglePausePlay() {
     pause_img.classList.toggle("hide");
 }
 
+function pauseGame() {
+    Globals.continueGame = false;
+    play_img.classList.remove("hide");
+    pause_img.classList.add("hide");
+}
+
 play_pause_btn.addEventListener("click", togglePausePlay);
 window.addEventListener("keypress", (e) => {
     if (e.code == "Space") togglePausePlay();
@@ -46,13 +52,13 @@ window.addEventListener("keypress", (e) => {
 
 settings_window_menu_option.addEventListener("click", () => {
     toggleSettingsWindow();
-    Globals.continueGame = false;
+    pauseGame();
 });
 settings_close_btn.addEventListener("click", toggleSettingsWindow);
 
 credits_window_menu_option.addEventListener("click", () => {
     toggleCreditsWindow();
-    Globals.continueGame = false;
+    pauseGame();
 });
 credits_close_btn.addEventListener("click", toggleCreditsWindow);
 
