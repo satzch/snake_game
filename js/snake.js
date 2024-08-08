@@ -19,7 +19,7 @@ const sprite_map = {
     },
     bent_part: {
         upLeft: {x: 128, y: 0},
-        upRightt: {x: 0, y: 0},
+        upRight: {x: 0, y: 0},
         downLeft: {x: 128, y: 128},
         downRight: {x: 0, y: 64},
     },
@@ -191,7 +191,7 @@ function drawSnakeBody(body) {
         // it exists only when the current segment is not tail 
         let nextSegmentPos = body.next.pos;
         
-        // check for straight body
+        // check for straight body part
         if (prevSegmentPos.x !== nextSegmentPos.x) {
             // if the x coordinate is not same the segment is horizontal
             s_pos = sprite_map.straight_part.horizontal;
@@ -201,9 +201,37 @@ function drawSnakeBody(body) {
         }
 
 
-        // check for bent body
-        // up and left part
-        
+        // check for bent body part
+
+        // store the directions
+        let prevGoingRight = prevSegmentPos.x > currSegmentPos.x;
+        let prevGoingLeft = prevSegmentPos.x < currSegmentPos.x;
+        let prevGoingUp = prevSegmentPos.y < currSegmentPos.y;
+        let prevGoingDown = prevSegmentPos.y > currSegmentPos.y;
+
+        let currGoingRight = nextSegmentPos.x < currSegmentPos.x;
+        let currGoingLeft = nextSegmentPos.x > currSegmentPos.x;
+        let currGoingUp = nextSegmentPos.y > currSegmentPos.y;
+        let currGoingDown = nextSegmentPos.y < currSegmentPos.y;
+
+
+        if ((currGoingUp && prevGoingRight) || (currGoingLeft && prevGoingDown)) {
+            // up and right part
+            // it is the same as left and down part
+            s_pos = sprite_map.bent_part.upRight;
+        } else if ((currGoingDown && prevGoingRight) || (currGoingLeft && prevGoingUp)) {
+            // down and right part
+            // same as left and up part
+            s_pos = sprite_map.bent_part.downRight;
+        } else if ((currGoingDown && prevGoingRight) || (currGoingRight && prevGoingUp)) {
+            // down and left part
+            // same as right and up part
+            s_pos = sprite_map.bent_part.downLeft;
+        } else if ((currGoingUp && prevGoingLeft) || (currGoingRight && prevGoingDown)) {
+            // up and left part
+            // same as right and down part
+            s_pos = sprite_map.bent_part.upLeft;
+        }
     }
 
     ctx.drawImage(snake_sprite_sheet, s_pos.x, s_pos.y, 64, 64,
