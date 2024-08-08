@@ -223,7 +223,7 @@ function drawSnakeBody(body) {
             // down and right part
             // same as left and up part
             s_pos = sprite_map.bent_part.downRight;
-        } else if ((currGoingDown && prevGoingRight) || (currGoingRight && prevGoingUp)) {
+        } else if ((currGoingDown && prevGoingLeft) || (currGoingRight && prevGoingUp)) {
             // down and left part
             // same as right and up part
             s_pos = sprite_map.bent_part.downLeft;
