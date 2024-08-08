@@ -166,31 +166,44 @@ function drawSnakeBody(body) {
     // source x and y positions
     let s_pos;
 
+    // store all positions to check in variables and use them
+    let currSegmentPos = body.pos;
+    let prevSegmentPos = body.prev.pos;
+    
     // check if the body segment is the tail
     if (body === snake.tail) {
-        if (body.prev.pos.x < body.pos.x) {
+        if (prevSegmentPos.x < currSegmentPos.x) {
+            // if prev segment is on left side
             s_pos = sprite_map.snake_tail.left;
-        } else if (body.prev.pos.x > body.pos.x) {
+        } else if (prevSegmentPos.x > currSegmentPos.x) {
+            // if prev segment is on right side
             s_pos = sprite_map.snake_tail.right;
-        } else if (body.prev.pos.y < body.pos.y) {
+        } else if (prevSegmentPos.y < currSegmentPos.y) {
+            // if prev segment is above
             s_pos = sprite_map.snake_tail.up;
-        } else if (body.prev.pos.y > body.pos.y) {
+        } else if (prevSegmentPos.y > currSegmentPos.y) {
+            // if prev segment is below
             s_pos = sprite_map.snake_tail.down;
         }
     } else {
 
+        // store the next segment pos here
+        // it exists only when the current segment is not tail 
+        let nextSegmentPos = body.next.pos;
+        
         // check for straight body
-        if (body.prev.pos.x !== body.next.pos.x) {
+        if (prevSegmentPos.x !== nextSegmentPos.x) {
             // if the x coordinate is not same the segment is horizontal
             s_pos = sprite_map.straight_part.horizontal;
-        } else if (body.prev.pos.y !== body.next.pos.y){
+        } else if (prevSegmentPos.y !== nextSegmentPos.y){
             // if the y coordinate is not same the segment is vertical
             s_pos = sprite_map.straight_part.vertical;
         }
 
 
         // check for bent body
-        // if ()
+        // up and left part
+        
     }
 
     ctx.drawImage(snake_sprite_sheet, s_pos.x, s_pos.y, 64, 64,
