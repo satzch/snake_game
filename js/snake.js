@@ -240,23 +240,25 @@ function drawSnakeBody(body) {
 
 const food = {
     pos: {
-        x: generateRandomIntBetween(0, SCREEN_WIDTH) + 10,
-        y: generateRandomIntBetween(0, SCREEN_HEIGHT) + 10
+        x: generateRandomIntBetween(0, SCREEN_WIDTH),
+        y: generateRandomIntBetween(0, SCREEN_HEIGHT)
     },
     color: "rgb(255, 255, 0)",
     size: UNIT,
     draw() {
-        ctx.fillStyle = this.color;
-        ctx.fillRect(
-            this.pos.x-(this.size/2),
-            this.pos.y-(this.size/2),
-            this.size,
-            this.size
-        );
+        // ctx.fillStyle = this.color;
+        // ctx.fillRect(
+        //     this.pos.x-(this.size/2),
+        //     this.pos.y-(this.size/2),
+        //     this.size,
+        //     this.size
+        // );
+        ctx.drawImage(snake_sprite_sheet, sprite_map.food.x, sprite_map.food.y, 64, 64,
+                    this.pos.x, this.pos.y, this.size, this.size);
     },
     updatePos() {
-        this.pos.x = generateRandomIntBetween(0, SCREEN_WIDTH) + 10;
-        this.pos.y = generateRandomIntBetween(0, SCREEN_HEIGHT) + 10;
+        this.pos.x = generateRandomIntBetween(0, SCREEN_WIDTH);
+        this.pos.y = generateRandomIntBetween(0, SCREEN_HEIGHT);
         // update the position again if the food is generated on the snake body
         if (checkSnakeBodyCollision(this)) {
             console.log("food relocated");
