@@ -1,3 +1,5 @@
+const snake_sprite_sheet = document.getElementById("snake-sprite");
+
 // snake head object (consider it a global), It is the snake head object and not the constructor
 const snake = {
     pos: {
@@ -14,7 +16,6 @@ const snake = {
     next: null, // the next snake_body object
     tail: this, // the end node or snake_body object
     length: 1,
-    spriteSheet: document.getElementById("snake-sprite"),
     draw() {
         // ctx.fillStyle = this.color;
         // ctx.fillRect(
@@ -57,6 +58,7 @@ const snake = {
     }
 };
 
+// draws the snake head
 function drawSnakeHead() {
     let s_x = 0;
     let s_y = 0;
@@ -77,6 +79,7 @@ function drawSnakeHead() {
                 snake.pos.x, snake.pos.y, snake.size, snake.size);
 }
 
+
 // returns the snake body segments as an object
 const snake_body = function() {
     return {
@@ -92,20 +95,21 @@ const snake_body = function() {
             y: 0
         },
         draw() {
-            ctx.fillStyle = this.color;
-            ctx.fillRect(
-                this.pos.x-(this.size/2),
-                this.pos.y-(this.size/2),
-                this.size,
-                this.size
-            );
-            ctx.fillStyle = snake.color;
-            ctx.strokeRect(
-                this.pos.x-(this.size/2),
-                this.pos.y-(this.size/2),
-                this.size,
-                this.size
-            );
+            // ctx.fillStyle = this.color;
+            // ctx.fillRect(
+            //     this.pos.x-(this.size/2),
+            //     this.pos.y-(this.size/2),
+            //     this.size,
+            //     this.size
+            // );
+            // ctx.fillStyle = snake.color;
+            // ctx.strokeRect(
+            //     this.pos.x-(this.size/2),
+            //     this.pos.y-(this.size/2),
+            //     this.size,
+            //     this.size
+            // );
+            drawSnakeBody(this);
         },
         update() {
             if (this.next != null) {
@@ -123,6 +127,11 @@ const snake_body = function() {
         }
     }
 };
+
+// draws the snake body
+function drawSnakeBody(body) {
+
+}
 
 const food = {
     pos: {
