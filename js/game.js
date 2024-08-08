@@ -18,6 +18,7 @@ function gameLoop()
             temp.update();
         temp.draw();
     }
+    snake.draw() // to keep snake head on top after collision
 
     // check for game over state
     Globals.gameOver = checkSnakeBodyCollision(snake) || checkBoundaryCollision();
