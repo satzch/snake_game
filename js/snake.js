@@ -81,6 +81,7 @@ const snake = {
             curr.next = new_segment;
         }
         this.length++;
+        new_segment.prev = this.tail;
         this.tail = new_segment;
     }
 };
@@ -115,6 +116,7 @@ const snake_body = function() {
         },
         size: snake.size,
         color: "rgb(255, 100, 200)",
+        prev: null,
         next: null,
         prevPos: {
             x: 0,
