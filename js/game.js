@@ -18,7 +18,7 @@ function gameLoop()
             temp.update();
         temp.draw();
     }
-    
+
     // check for game over state
     Globals.gameOver = checkSnakeBodyCollision(snake) || checkBoundaryCollision();
 
@@ -42,8 +42,8 @@ function gameLoop()
     }
 
     // call and loop the function
-    // setTimeout(gameLoop, 200);
-    requestAnimationFrame(gameLoop);
+    setTimeout(gameLoop, 60); // for debugging
+    // requestAnimationFrame(gameLoop);
 }
 
 function pauseLoop() {

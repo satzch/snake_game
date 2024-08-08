@@ -10,8 +10,8 @@ const sprite_map = {
     snake_tail: {
         up: {x: 192, y: 128},
         down: {x: 256, y: 192},
-        left: {x: 256, y: 192},
-        right: {x: 192, y: 128},
+        left: {x: 192, y: 192},
+        right: {x: 256, y: 128},
     },
     straight_part: {
         horizontal: {x: 64, y: 0},
@@ -40,7 +40,7 @@ const snake = {
     size: UNIT,
     color: "rgb(150, 80, 150)",
     next: null, // the next snake_body object
-    tail: this, // the end node or snake_body object
+    tail: null, // the end node or snake_body object
     length: 1,
     draw() {
         // ctx.fillStyle = this.color;
@@ -81,7 +81,11 @@ const snake = {
             curr.next = new_segment;
         }
         this.length++;
-        new_segment.prev = this.tail;
+
+        // set the tail as previous of new segment
+        if (this.tail == null) new_segment.prev = snake;
+        else new_segment.prev = this.tail;
+        // make the new segment the tail
         this.tail = new_segment;
     }
 };
@@ -137,6 +141,7 @@ const snake_body = function() {
             //     this.size,
             //     this.size
             // );
+            console.log(this);
             drawSnakeBody(this);
         },
         update() {
@@ -159,13 +164,37 @@ const snake_body = function() {
 // draws the snake body
 function drawSnakeBody(body) {
     // source x and y positions
-    let s_x = 0;
-    let s_y = 0;
+    let s_pos;
 
     // check if the body segment is the tail
     if (body === snake.tail) {
+        if (body.prev.pos.x < body.pos.x) {
+            s_pos = sprite_map.snake_tail.left;
+        } else if (body.prev.pos.x > body.pos.x) {
+            s_pos = sprite_map.snake_tail.right;
+        } else if (body.prev.pos.y < body.pos.y) {
+            s_pos = sprite_map.snake_tail.up;
+        } else if (body.prev.pos.y > body.pos.y) {
+            s_pos = sprite_map.snake_tail.down;
+        }
+    } else {
 
+        // check for straight body
+        if (body.prev.pos.x !== body.next.pos.x) {
+            // if the x coordinate is not same the segment is horizontal
+            s_pos = sprite_map.straight_part.horizontal;
+        } else if (body.prev.pos.y !== body.next.pos.y){
+            // if the y coordinate is not same the segment is vertical
+            s_pos = sprite_map.straight_part.vertical;
+        }
+
+
+        // check for bent body
+        // if ()
     }
+
+    ctx.drawImage(snake_sprite_sheet, s_pos.x, s_pos.y, 64, 64,
+                body.pos.x, body.pos.y, body.size, body.size);
 }
 
 const food = {
