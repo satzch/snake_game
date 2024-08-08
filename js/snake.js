@@ -1,8 +1,8 @@
 // snake head object (consider it a global), It is the snake head object and not the constructor
 const snake = {
     pos: {
-        x: generateRandomIntBetween(SCREEN_WIDTH/4, SCREEN_WIDTH*3/4) + 10,
-        y: generateRandomIntBetween(SCREEN_HEIGHT/4, SCREEN_HEIGHT*3/4) + 10
+        x: generateRandomIntBetween(SCREEN_WIDTH/4, SCREEN_WIDTH*3/4),
+        y: generateRandomIntBetween(SCREEN_HEIGHT/4, SCREEN_HEIGHT*3/4)
     },
     speed: UNIT,
     vel: {
@@ -14,14 +14,32 @@ const snake = {
     next: null, // the next snake_body object
     tail: this, // the end node or snake_body object
     length: 1,
+    spriteSheet: document.getElementById("snake-sprite"),
     draw() {
-        ctx.fillStyle = this.color;
-        ctx.fillRect(
-            this.pos.x-(this.size/2),
-            this.pos.y-(this.size/2),
-            this.size,
-            this.size
-        );
+        // ctx.fillStyle = this.color;
+        // ctx.fillRect(
+        //     this.pos.x-(this.size/2),
+        //     this.pos.y-(this.size/2),
+        //     this.size,
+        //     this.size
+        // );
+        let s_x = 0;
+        let s_y = 0;
+        if (this.vel.x > 0) {
+            s_x = 256;
+            s_y = 0;
+        } else if (this.vel.x < 0) {
+            s_x = 192;
+            s_y = 64;
+        } else if (this.vel.y < 0) {
+            s_x = 192;
+            s_y = 0;
+        } else if (this.vel.y > 0) {
+            s_x = 256;
+            s_y = 64;
+        }
+        ctx.drawImage(this.spriteSheet, s_x, s_y, 64, 64,
+                    this.pos.x, this.pos.y, this.size, this.size);
     },
     update() {
         if (this.next != null) {
