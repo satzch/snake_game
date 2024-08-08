@@ -43,13 +43,6 @@ const snake = {
     tail: null, // the end node or snake_body object
     length: 1,
     draw() {
-        // ctx.fillStyle = this.color;
-        // ctx.fillRect(
-        //     this.pos.x-(this.size/2),
-        //     this.pos.y-(this.size/2),
-        //     this.size,
-        //     this.size
-        // );
         drawSnakeHead();
     },
     update() {
@@ -127,21 +120,6 @@ const snake_body = function() {
             y: 0
         },
         draw() {
-            // ctx.fillStyle = this.color;
-            // ctx.fillRect(
-            //     this.pos.x-(this.size/2),
-            //     this.pos.y-(this.size/2),
-            //     this.size,
-            //     this.size
-            // );
-            // ctx.fillStyle = snake.color;
-            // ctx.strokeRect(
-            //     this.pos.x-(this.size/2),
-            //     this.pos.y-(this.size/2),
-            //     this.size,
-            //     this.size
-            // );
-            console.log(this);
             drawSnakeBody(this);
         },
         update() {
@@ -246,13 +224,6 @@ const food = {
     color: "rgb(255, 255, 0)",
     size: UNIT,
     draw() {
-        // ctx.fillStyle = this.color;
-        // ctx.fillRect(
-        //     this.pos.x-(this.size/2),
-        //     this.pos.y-(this.size/2),
-        //     this.size,
-        //     this.size
-        // );
         ctx.drawImage(snake_sprite_sheet, sprite_map.food.x, sprite_map.food.y, 64, 64,
                     this.pos.x, this.pos.y, this.size, this.size);
     },
