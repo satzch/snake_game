@@ -39,6 +39,6 @@ function drawGrid(color) {
 }
 
 // generate random integer between min and max
-function generateRandomInt(min, max) {
+function generateRandomIntBetween(min, max) {
     return Math.floor(Math.random() * (max-min)/UNIT) * UNIT + min;
 } 

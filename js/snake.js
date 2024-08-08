@@ -1,8 +1,8 @@
-// snake head object
+// snake head object (consider it a global), It is the snake head object and not the constructor
 const snake = {
     pos: {
-        x: generateRandomInt(SCREEN_WIDTH/4, SCREEN_WIDTH*3/4) + 10,
-        y: generateRandomInt(SCREEN_HEIGHT/4, SCREEN_HEIGHT*3/4) + 10
+        x: generateRandomIntBetween(SCREEN_WIDTH/4, SCREEN_WIDTH*3/4) + 10,
+        y: generateRandomIntBetween(SCREEN_HEIGHT/4, SCREEN_HEIGHT*3/4) + 10
     },
     speed: UNIT,
     vel: {
@@ -29,7 +29,6 @@ const snake = {
         }
         this.pos.x += this.vel.x;
         this.pos.y += this.vel.y;
-        // Globals.gameOver = checkBoundaryCollision();
     },
     setPos(pos_x, pos_y) {
         this.pos.x = pos_x;
@@ -105,8 +104,8 @@ const snake_body = function() {
 
 const food = {
     pos: {
-        x: generateRandomInt(0, SCREEN_WIDTH) + 10,
-        y: generateRandomInt(0, SCREEN_HEIGHT) + 10
+        x: generateRandomIntBetween(0, SCREEN_WIDTH) + 10,
+        y: generateRandomIntBetween(0, SCREEN_HEIGHT) + 10
     },
     color: "rgb(255, 255, 0)",
     size: UNIT,
@@ -119,19 +118,19 @@ const food = {
             this.size
         );
     },
-    update() {
-        this.pos.x = generateRandomInt(0, SCREEN_WIDTH) + 10;
-        this.pos.y = generateRandomInt(0, SCREEN_HEIGHT) + 10;
+    updatePos() {
+        this.pos.x = generateRandomIntBetween(0, SCREEN_WIDTH) + 10;
+        this.pos.y = generateRandomIntBetween(0, SCREEN_HEIGHT) + 10;
         // update the position again if the food is generated on the snake body
         if (checkSnakeBodyCollision(this)) {
             console.log("food relocated");
-            this.update();
+            this.updatePos();
         }
     },
     checkCollision() {
         if (checkCollision(this, snake))
         {
-            this.update();
+            this.updatePos();
             console.log("Collision at: ", this.pos.x, " ", this.pos.y);
             snake.addBodySegment();
         }
