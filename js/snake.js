@@ -23,23 +23,7 @@ const snake = {
         //     this.size,
         //     this.size
         // );
-        let s_x = 0;
-        let s_y = 0;
-        if (this.vel.x > 0) {
-            s_x = 256;
-            s_y = 0;
-        } else if (this.vel.x < 0) {
-            s_x = 192;
-            s_y = 64;
-        } else if (this.vel.y < 0) {
-            s_x = 192;
-            s_y = 0;
-        } else if (this.vel.y > 0) {
-            s_x = 256;
-            s_y = 64;
-        }
-        ctx.drawImage(this.spriteSheet, s_x, s_y, 64, 64,
-                    this.pos.x, this.pos.y, this.size, this.size);
+        drawSnakeHead();
     },
     update() {
         if (this.next != null) {
@@ -72,6 +56,26 @@ const snake = {
         this.length++;
     }
 };
+
+function drawSnakeHead() {
+    let s_x = 0;
+    let s_y = 0;
+    if (snake.vel.x > 0) {
+        s_x = 256;
+        s_y = 0;
+    } else if (snake.vel.x < 0) {
+        s_x = 192;
+        s_y = 64;
+    } else if (snake.vel.y < 0) {
+        s_x = 192;
+        s_y = 0;
+    } else if (snake.vel.y > 0) {
+        s_x = 256;
+        s_y = 64;
+    }
+    ctx.drawImage(snake.spriteSheet, s_x, s_y, 64, 64,
+                snake.pos.x, snake.pos.y, snake.size, snake.size);
+}
 
 // returns the snake body segments as an object
 const snake_body = function() {
