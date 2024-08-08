@@ -29,6 +29,7 @@ const snake = {
         }
         this.pos.x += this.vel.x;
         this.pos.y += this.vel.y;
+        // Globals.gameOver = checkBoundaryCollision();
     },
     setPos(pos_x, pos_y) {
         this.pos.x = pos_x;
@@ -137,7 +138,9 @@ const food = {
     }
 }
 
-window.addEventListener("keydown", (e) => {
+
+// handles user inputs
+function keyPressHandler(e) {
     if (e.key == "ArrowUp") {
         if (!(snake.vel.y > 0) || snake.length == 1) {
             snake.setVel(0, -snake.speed);
@@ -147,7 +150,7 @@ window.addEventListener("keydown", (e) => {
             snake.setVel(0, snake.speed);
         }
     }
-
+    
     if (e.key == "ArrowLeft") {
         if (!(snake.vel.x > 0) || snake.length == 1) {
             snake.setVel(-snake.speed, 0);   
@@ -157,7 +160,11 @@ window.addEventListener("keydown", (e) => {
             snake.setVel(snake.speed, 0);
         }
     }
-});
+    
+    if (e.code == "Space") togglePausePlay();
+}
+window.addEventListener("keydown", keyPressHandler);
+
 
 // checks for collision between two entities with pos and size attributes
 function checkCollision(a, b) {
@@ -169,7 +176,7 @@ function checkCollision(a, b) {
     }
 }
 
-// check collision of argument with the snake body
+// check collision of argument entity with the snake body
 // returns true if the snake body collides with entity otherwise returns false
 function checkSnakeBodyCollision(entity) {
     if (snake.next == null || entity == null) return false;
@@ -180,3 +187,10 @@ function checkSnakeBodyCollision(entity) {
     }
     return false;
 }
+
+// returns true if snake goes out of screen
+function checkBoundaryCollision() {
+    let snake_x_outside = (snake.pos.x < 0 || snake.pos.x >= SCREEN_WIDTH);
+    let snake_y_outside = (snake.pos.y < 0 || snake.pos.y >= SCREEN_HEIGHT);
+    return snake_x_outside || snake_y_outside; 
+} 

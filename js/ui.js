@@ -46,9 +46,6 @@ function pauseGame() {
 }
 
 play_pause_btn.addEventListener("click", togglePausePlay);
-window.addEventListener("keypress", (e) => {
-    if (e.code == "Space") togglePausePlay();
-});
 
 settings_window_menu_option.addEventListener("click", () => {
     toggleSettingsWindow();
