@@ -18,6 +18,9 @@ function gameLoop()
             temp.update();
         temp.draw();
     }
+    
+    // check for game over state
+    Globals.gameOver = checkSnakeBodyCollision(snake) || checkBoundaryCollision();
 
     // update and draw the food
     food.checkCollision();
@@ -26,8 +29,6 @@ function gameLoop()
     // update the UI
     updateUI();
 
-    // check for game over state
-    Globals.gameOver = checkSnakeBodyCollision(snake) || checkBoundaryCollision();
     if (Globals.gameOver) {
         pauseGame();
         play_pause_btn.removeEventListener("click", togglePausePlay);

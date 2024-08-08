@@ -2,14 +2,14 @@
 const snake = {
     pos: {
         x: generateRandomInt(SCREEN_WIDTH/4, SCREEN_WIDTH*3/4) + 10,
-        y: generateRandomInt(SCREEN_HEIGHT/4, SCREEN_HEIGHT*3/4)
+        y: generateRandomInt(SCREEN_HEIGHT/4, SCREEN_HEIGHT*3/4) + 10
     },
-    speed: 20,
+    speed: UNIT,
     vel: {
-        x: 20,
+        x: UNIT,
         y: 0
     },
-    size: 20,
+    size: UNIT,
     color: "rgb(150, 80, 150)",
     next: null, // the next snake_body object
     tail: this, // the end node or snake_body object
@@ -109,7 +109,7 @@ const food = {
         y: generateRandomInt(0, SCREEN_HEIGHT) + 10
     },
     color: "rgb(255, 255, 0)",
-    size: 20,
+    size: UNIT,
     draw() {
         ctx.fillStyle = this.color;
         ctx.fillRect(
