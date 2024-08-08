@@ -1,5 +1,31 @@
 const snake_sprite_sheet = document.getElementById("snake-sprite");
 
+const sprite_map = {
+    snake_head: {
+        up: {x: 192, y: 0},
+        down: {x: 256, y: 64},
+        left: {x: 192, y: 64},
+        right: {x: 256, y: 0},
+    },
+    snake_tail: {
+        up: {x: 192, y: 128},
+        down: {x: 256, y: 192},
+        left: {x: 256, y: 192},
+        right: {x: 192, y: 128},
+    },
+    straight_part: {
+        horizontal: {x: 64, y: 0},
+        vertical: {x: 128, y: 64}
+    },
+    bent_part: {
+        upLeft: {x: 128, y: 0},
+        upRightt: {x: 0, y: 0},
+        downLeft: {x: 128, y: 128},
+        downRight: {x: 0, y: 64},
+    },
+    food: {x: 0, y: 192}
+}
+
 // snake head object (consider it a global), It is the snake head object and not the constructor
 const snake = {
     pos: {
@@ -55,31 +81,31 @@ const snake = {
             curr.next = new_segment;
         }
         this.length++;
+        this.tail = new_segment;
     }
 };
 
 // draws the snake head
 function drawSnakeHead() {
-    let s_x = 0;
-    let s_y = 0;
+    // source x and y positions
+    let s_pos;
+
+    // check snake direction and draw proper sprite
     if (snake.vel.x > 0) {
-        s_x = 256;
-        s_y = 0;
+        s_pos = sprite_map.snake_head.right;
     } else if (snake.vel.x < 0) {
-        s_x = 192;
-        s_y = 64;
+        s_pos = sprite_map.snake_head.left;
     } else if (snake.vel.y < 0) {
-        s_x = 192;
-        s_y = 0;
+        s_pos = sprite_map.snake_head.up;
     } else if (snake.vel.y > 0) {
-        s_x = 256;
-        s_y = 64;
+        s_pos = sprite_map.snake_head.down;
     }
-    ctx.drawImage(snake.spriteSheet, s_x, s_y, 64, 64,
+    ctx.drawImage(snake_sprite_sheet, s_pos.x, s_pos.y, 64, 64,
                 snake.pos.x, snake.pos.y, snake.size, snake.size);
 }
 
 
+// Factory function
 // returns the snake body segments as an object
 const snake_body = function() {
     return {
@@ -130,7 +156,14 @@ const snake_body = function() {
 
 // draws the snake body
 function drawSnakeBody(body) {
+    // source x and y positions
+    let s_x = 0;
+    let s_y = 0;
 
+    // check if the body segment is the tail
+    if (body === snake.tail) {
+
+    }
 }
 
 const food = {
