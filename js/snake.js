@@ -63,7 +63,7 @@ const snake = {
     addBodySegment() {
         Globals.score += 5;
         let new_segment = new snake_body();
-        new_segment.setPos(this.pos.x, this.pos.y);
+        new_segment.setPos(this.pos.x-this.vel.x-this.size, this.pos.y-this.vel.y-this.size);
         if (this.next == null) {
             this.next = new_segment;
         } else {
@@ -299,4 +299,8 @@ function checkBoundaryCollision() {
     let snake_x_outside = (snake.pos.x < 0 || snake.pos.x >= SCREEN_WIDTH);
     let snake_y_outside = (snake.pos.y < 0 || snake.pos.y >= SCREEN_HEIGHT);
     return snake_x_outside || snake_y_outside; 
-} 
+}
+
+// add one extra snake body part, for fixing snake graphics
+// since with only head it looks like cutted head only
+snake.addBodySegment();
