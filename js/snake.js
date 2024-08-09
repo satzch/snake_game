@@ -304,3 +304,4 @@ function checkBoundaryCollision() {
 // add one extra snake body part, for fixing snake graphics
 // since with only head it looks like cutted head only
 snake.addBodySegment();
+Globals.score = 0;
