@@ -14,6 +14,9 @@ const settings_close_btn = document.getElementById("settings-options-close");
 const credits_close_btn = document.getElementById("credits-close");
 const settings_option_sound = document.getElementById("settings-options-sound");
 const settings_option_grid = document.getElementById("settings-options-grid");
+const game_over_screen = document.getElementById("game-over-screen");
+const game_over_screen_score = document.getElementById("game-over-score-points");
+const game_over_screen_close = document.getElementById("game-over-screen-close");
 
 
 // this function will be called each frame
@@ -31,6 +34,14 @@ function toggleSettingsWindow() {
 
 function toggleCreditsWindow() {
     credits_window.classList.toggle("hide");
+}
+
+function toggleGameOverScreen() {
+    game_over_screen.classList.toggle("hide");
+}
+
+function updateGameOverScreenScore() {
+    game_over_screen_score.innerText = Globals.score;
 }
 
 function togglePausePlay() {
@@ -66,3 +77,5 @@ settings_option_sound.addEventListener("change", (e) => {
 settings_option_grid.addEventListener("click", (e) => {
     Settings.gridOn = settings_option_grid.checked;
 });
+
+game_over_screen_close.addEventListener("click", toggleGameOverScreen);

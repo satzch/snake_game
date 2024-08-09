@@ -34,6 +34,8 @@ function gameLoop()
         pauseGame();
         play_pause_btn.removeEventListener("click", togglePausePlay);
         window.removeEventListener("keydown", keyPressHandler);
+        toggleGameOverScreen();
+        updateGameOverScreenScore();
     }
     
     // check for game pause state
