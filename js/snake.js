@@ -237,7 +237,7 @@ const food = {
         }
     },
     checkCollision() {
-        if (checkCollision(this, snake))
+        if (checkCollisionBetween(this, snake))
         {
             this.updatePos();
             console.log("Collision at: ", this.pos.x, " ", this.pos.y);
@@ -275,13 +275,11 @@ window.addEventListener("keydown", keyPressHandler);
 
 
 // checks for collision between two entities with pos and size attributes
-function checkCollision(a, b) {
-    if (Math.abs(a.pos.x - b.pos.x) < (a.size/2 + b.size/2)  &&  Math.abs(a.pos.y - b.pos.y) < (a.size/2 + b.size/2))
-    {
-        return true;
-    } else {
-        return false;
-    }
+function checkCollisionBetween(a, b) {
+    // if distance between two points is less than distance to midpoint of the points, they collide
+    let xCollides = Math.abs(a.pos.x - b.pos.x) < (a.size + b.size)/2;
+    let yCollides = Math.abs(a.pos.y - b.pos.y) < (a.size + b.size)/2;
+    return xCollides && yCollides;
 }
 
 // check collision of argument entity with the snake body
@@ -290,7 +288,7 @@ function checkSnakeBodyCollision(entity) {
     if (snake.next == null || entity == null) return false;
     let temp = snake.next;
     while (temp != null) {
-        if (checkCollision(temp, entity)) return true;
+        if (checkCollisionBetween(temp, entity)) return true;
         temp = temp.next;
     }
     return false;
