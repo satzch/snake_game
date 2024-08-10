@@ -3,7 +3,7 @@ function gameLoop()
 {
     // clear screen  
     ctx.clearRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-    console.log("refresh")
+    // console.log("refresh")
     
     // draw the grid
     if (Settings.gridOn) drawGrid("black");
@@ -45,7 +45,7 @@ function gameLoop()
     }
 
     // call and loop the function
-    setTimeout(gameLoop, 60); // for debugging
+    setTimeout(gameLoop, 180);
     // requestAnimationFrame(gameLoop);
 }
 

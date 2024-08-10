@@ -8,23 +8,19 @@
     font-family: lonely-coffee;
     src: url("../assets/lonely_coffee/Lonely Coffee.ttf");
 }
-@font-face {
-    font-family: keep-cheese;
-    src: url("../assets/keep_cheese/Keep Cheese.ttf");
-}
 
 body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 90vh;
+    /* for making it 16:9 aspect ratio, even if original device aspect ratio is different*/
+    height: calc(9/16 * 100vw); 
     overflow: hidden;
 }
 
 #canvas {
     border: 5px solid black;
-    margin-top: 10vh;
-    width: 52vw;
+    width: 52%;
 }
 
 .hide {
@@ -47,18 +43,18 @@ body {
 
 #bg-img {
     position: absolute;
-    width: 100vw;
-    height: 120vh;
-    top: -10vh;
-    opacity: 90%;
+    width: 100%;
+    height: 120%;
+    top: -10%;
+    opacity: 80%;
 }
 
 #UI {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     display: flex;
     justify-content: space-between;
 }
@@ -69,33 +65,34 @@ body {
 
 #ui-board {
     position: relative;
-    width: 33vw;
-    height: 100px;
+    width: 33%;
+    height: min(100px, 10%);
     display: flex;
     justify-content: space-around;
+    margin-top: 3%;
 }
 
 #ui-board > img {
     position: absolute;
-    top: 3vh;
     width: 100%;
     height: 100%;
 }
 
 #ui-board-content {
-    width: 600px;
-    height: 100px;
-    margin-top: 3vh;
+    width: 100%;
+    height: 100%;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    /* border: 2px solid black; */
-    z-index: 2;
+    z-index: 5;
+}
+
+#ui-board-play {
+    width: min(20%, 100px);
 }
 
 #ui-board-play > img {
-    width: 80px;
-    height: 80px;
+    width: 80%;
 }
 
 #ui-board-play > img:hover {
@@ -108,10 +105,10 @@ body {
 }
 
 #ui-board-score {
-    width: 350px;
+    width: min(80%, 350px);
     font-family: lonely-coffee;
     font-weight: bold;
-    font-size: 4em;
+    font-size: min(4vw, 4em);
 }
 
 
@@ -119,22 +116,23 @@ body {
 /******** UI Controls ********/
 
 #ui-controls {
-    flex-grow: 1;
     position: relative;
-    width: 33vw;
+    width: 33%;
 }
 
 #ui-controls-box {
     position: absolute;
     bottom: 0;
     left: -5px;
-    width: 360px;
-    height: 600px;
+    width: min(70%);
+    height: 70%;
     transform: rotate(-10deg);
     font-family: lonely-coffee;
+    padding: 10%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    z-index: 5;
 }
 
 #ui-controls-box > img {
@@ -146,13 +144,12 @@ body {
 
 #ui-controls-heading {
     position: relative;
-    font-size: 3em;
-    top: -1vh;
+    font-size: min(3vw, 3em);
 }
 
 .ui-controls-info {
-    margin: 2em 0;
-    font-size: 1.4em;
+    margin: min(2vw, 2em) 0;
+    font-size: min(1.6vw, 1.6em);
     text-shadow: 0 0 5px white;
 }
 
@@ -162,17 +159,17 @@ body {
 
 #ui-menu {
     position: relative;
-    width: 33vw; 
+    width: 33%; 
 }
 
 #ui-menu-box {
     position: absolute;
-    bottom: 100px;
+    bottom: 4vw;
     right: 4vw;
-    width: 300px;
-    height: 180px;
+    width: min( 50%, 350px);
+    height: min( 20%, 150px);
     transform: rotate(-20deg);
-    z-index: 0;
+    z-index: 5;
 }
 
 #ui-menu-box > img, #ui-menu-content {
@@ -187,7 +184,7 @@ body {
     align-items: center;
     justify-content: center ;
     font-family: lonely-coffee;
-    font-size: 2em;
+    font-size: min( 2vw, 2em);
 }
 
 .ui-menus {
@@ -195,7 +192,7 @@ body {
 }
 
 .ui-menus:hover {
-    text-shadow: 0 0 5px white;
+    text-shadow: 0 0 10px white;
 }
 
 
@@ -206,19 +203,19 @@ body {
     position: inherit;
     width: 100%;
     height: 100%;
-    z-index: 6;
+    z-index: 10;
 }
 
 #ui-settings-heading {
     position: relative;
-    font-size: 2.5em;
-    top: -0.5em;
+    font-size: min(5vw, 2.5em);
+    top: -0.5vw;
 }
 
 #ui-settings-content > img {
     position: absolute;
-    width: max(40%, 400px);
-    height: max(60%, 600px);
+    width: min(40%, 60%);
+    height: min(60%, 80%);
     z-index: -1;
 }
 
@@ -229,39 +226,45 @@ body {
     justify-content: center;
     align-items: center;
     font-family: lonely-coffee;
-    font-size: 3em;
+    font-size: min(3vw, 3em);
 }
 
 .settings-options {
     margin: 2vh;
     width: 30%;
+    display: flex;
+    align-items: center;
 }
 
 .settings-options > span {
-    margin-right: 20px;
+    margin-right: 10%;
 }
 
 .settings-options > input {
-    height: 3em;
+    height: min(3vw, 3em);
+}
+
+.settings-options > input[type="range"] {
+    width: 50%;
 }
 
 .settings-options > input[type="checkbox"] {
     appearance: none;
     position: relative;
-    width: 3em;
-    height: 3em;
-    border: 8px solid black;
+    width: min(3vw, 3em);
+    height: min(3vw, 3em);
+    border: min(0.8vw, 8px) solid black;
     color: black;
-    border-radius: 10px;
+    border-radius: 1vw;
     vertical-align: -2px;
 }
 
 .settings-options > input[type="checkbox"]::before {
     content: "✔️";
     position: absolute;
-    font-size: 3.5em;
-    left: -0.25em;
-    bottom: -0.2em;
+    font-size: min(3.5vw, 3.5em);
+    left: -0.25vw;
+    bottom: -0.2vw;
     visibility: hidden;
 }
 
@@ -274,15 +277,11 @@ body {
 }
 
 #settings-options-close {
-    margin-top: 30px;
-    border: 6px solid black;
-    border-radius: 8px;
-    padding: 5px;
+    margin-top: 2%;
+    border: 0.5vw solid black;
+    border-radius: 0.8vw;
+    padding: 1%;
     text-align: center;
-}
-
-#settings-options-close:hover {
-    text-shadow: 0 0 10px white;
 }
 
 
@@ -293,19 +292,19 @@ body {
     position: inherit;
     width: 100%;
     height: 100%;
-    z-index: 6;
+    z-index: 10;
 }
 
 #ui-credits-heading {
     position: relative;
-    font-size: 2.5em;
-    top: -0.5em;
+    font-size: min(4vw, 2.5em);
+    top: -1vw;
 }
 
 #ui-credits-content > img {
     position: absolute;
-    width: max(40%, 400px);
-    height: max(60%, 600px);
+    width: max(40%, 60%);
+    height: max(60%, 80%);
     z-index: -1;
 }
 
@@ -316,18 +315,18 @@ body {
     justify-content: center;
     align-items: center;
     font-family: lonely-coffee;
-    font-size: 2em;
+    font-size: min(2vw, 2em);
 }
 
 .ui-credits-section {
-    width: 60%;
+    width: 70%;
 }
 
 #credits-close {
-    margin-top: 30px;
-    border: 6px solid black;
-    border-radius: 8px;
-    padding: 5px;
+    margin-top: 1vw;
+    border: 0.5vw solid black;
+    border-radius: 0.8vw;
+    padding: 0.5vw;
 }
 
 #credits-close:hover {
@@ -341,19 +340,19 @@ body {
     position: inherit;
     width: 100%;
     height: 100%;
-    z-index: 6;
+    z-index: 10;
 }
 
 #game-over-screen-heading {
     position: relative;
-    font-size: 2.5em;
+    font-size: min(4vw, 2.5em);
     top: -0.5em;
 }
 
 #game-over-screen-content > img {
     position: absolute;
-    width: max(40%, 400px);
-    height: max(50%, 500px);
+    width: max(40%, 50%);
+    height: max(50%, 60%);
     z-index: -1;
 }
 
@@ -364,7 +363,7 @@ body {
     justify-content: center;
     align-items: center;
     font-family: lonely-coffee;
-    font-size: 2em;
+    font-size: min(4vw, 2em);
 }
 
 #game-over-screen-content > div {
@@ -372,11 +371,11 @@ body {
 }
 
 #game-over-screen-close {
-    border: 5px solid black;
-    border-radius: 10px;
-    padding: 5px;
+    border: 0.5vw solid black;
+    border-radius: 0.8vw;
+    padding: 1vw;
 }
 
 #game-over-screen-close:hover {
-    text-shadow: 0 0 10px white;
+    text-shadow: 0 0 0.5vw white;
 }
