@@ -370,12 +370,20 @@ body {
     margin: 2vh 0;
 }
 
-#game-over-screen-close {
+#game-over-screen-btns {
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+}
+
+#game-over-screen-close, #game-over-screen-restart {
     border: 0.5vw solid black;
     border-radius: 0.8vw;
     padding: 1vw;
 }
 
-#game-over-screen-close:hover {
+#game-over-screen-close:hover, #game-over-screen-restart:hover {
     text-shadow: 0 0 0.5vw white;
 }

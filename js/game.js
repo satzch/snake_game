@@ -1,3 +1,5 @@
+let animationFrameId;
+let timeoutId;
 
 function gameLoop()
 {
@@ -44,8 +46,12 @@ function gameLoop()
         return;
     }
 
+    // clear previous animation frames 
+    if (timeoutId) clearTimeout(timeoutId);
+    if (animationFrameId) cancelAnimationFrame(animationFrameId);
+    
     // call and loop the function
-    setTimeout(gameLoop, 180);
+    timeoutId = setTimeout(gameLoop, 180);
     // requestAnimationFrame(gameLoop);
 }
 
@@ -54,7 +60,31 @@ function pauseLoop() {
         gameLoop();
         return;
     }
-    requestAnimationFrame(pauseLoop);
+    if (timeoutId) clearTimeout(timeoutId);
+    if (animationFrameId) cancelAnimationFrame(animationFrameId);
+    animationFrameId = requestAnimationFrame(pauseLoop);
 }
 
 gameLoop();
+
+const game_over_screen_restart = document.getElementById("game-over-screen-restart");
+game_over_screen_restart.addEventListener("click", restartGame);
+
+// handle restarting the game
+function restartGame() {
+    toggleGameOverScreen();
+    resetSnake();
+    Globals.score = 0;
+    Globals.continueGame = false;
+    Globals.gameOver = false;
+    play_pause_btn.addEventListener("click", togglePausePlay);
+    window.addEventListener("keydown", keyPressHandler);
+    gameLoop();
+}
+
+function resetSnake() {
+    snake.next = null;
+    snake.tail = null;
+    snake = snake_head();
+    snake.addBodySegment();
+}

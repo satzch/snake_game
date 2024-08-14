@@ -26,62 +26,69 @@ const sprite_map = {
     food: {x: 0, y: 192}
 }
 
-// snake head object (consider it a global), It is the snake head object and not the constructor
-const snake = {
-    pos: {
-        x: generateRandomIntBetween(SCREEN_WIDTH/4, SCREEN_WIDTH*3/4),
-        y: generateRandomIntBetween(SCREEN_HEIGHT/4, SCREEN_HEIGHT*3/4)
-    },
-    speed: UNIT,
-    vel: {
-        x: UNIT,
-        y: 0
-    },
-    size: UNIT,
-    color: "rgb(150, 80, 150)",
-    next: null, // the next snake_body object
-    tail: null, // the end node or snake_body object
-    length: 1,
-    draw() {
-        drawSnakeHead();
-    },
-    update() {
-        if (this.next != null) {
-            this.next.setPos(this.pos.x, this.pos.y);
-        }
-        this.pos.x += this.vel.x;
-        this.pos.y += this.vel.y;
-    },
-    setPos(pos_x, pos_y) {
-        this.pos.x = pos_x;
-        this.pos.y = pos_y;
-    },
-    setVel(vel_x, vel_y) {
-        this.vel.x = vel_x;
-        this.vel.y = vel_y;
-    },
-    addBodySegment() {
-        Globals.score += 5;
-        let new_segment = new snake_body();
-        new_segment.setPos(this.pos.x-this.vel.x-this.size, this.pos.y-this.vel.y-this.size);
-        if (this.next == null) {
-            this.next = new_segment;
-        } else {
-            let curr = this.next;
-            while (curr.next != null) {
-                curr = curr.next;
-            }
-            curr.next = new_segment;
-        }
-        this.length++;
 
-        // set the tail as previous of new segment
-        if (this.tail == null) new_segment.prev = snake;
-        else new_segment.prev = this.tail;
-        // make the new segment the tail
-        this.tail = new_segment;
-    }
-};
+let snake;
+
+// factory function for snake head
+const snake_head = function() {
+    return {
+        pos: {
+            x: generateRandomIntBetween(SCREEN_WIDTH/4, SCREEN_WIDTH*3/4),
+            y: generateRandomIntBetween(SCREEN_HEIGHT/4, SCREEN_HEIGHT*3/4)
+        },
+        speed: UNIT,
+        vel: {
+            x: UNIT,
+            y: 0
+        },
+        size: UNIT,
+        color: "rgb(150, 80, 150)",
+        next: null, // the next snake_body object
+        tail: null, // the end node or snake_body object
+        length: 1,
+        draw() {
+            drawSnakeHead();
+        },
+        update() {
+            if (this.next != null) {
+                this.next.setPos(this.pos.x, this.pos.y);
+            }
+            this.pos.x += this.vel.x;
+            this.pos.y += this.vel.y;
+        },
+        setPos(pos_x, pos_y) {
+            this.pos.x = pos_x;
+            this.pos.y = pos_y;
+        },
+        setVel(vel_x, vel_y) {
+            this.vel.x = vel_x;
+            this.vel.y = vel_y;
+        },
+        addBodySegment() {
+            Globals.score += 5;
+            let new_segment = new snake_body();
+            new_segment.setPos(this.pos.x-this.vel.x-this.size, this.pos.y-this.vel.y-this.size);
+            if (this.next == null) {
+                this.next = new_segment;
+            } else {
+                let curr = this.next;
+                while (curr.next != null) {
+                    curr = curr.next;
+                }
+                curr.next = new_segment;
+            }
+            this.length++;
+
+            // set the tail as previous of new segment
+            if (this.tail == null) new_segment.prev = snake;
+            else new_segment.prev = this.tail;
+            // make the new segment the tail
+            this.tail = new_segment;
+        }
+    };
+}
+
+snake = snake_head();
 
 // draws the snake head
 function drawSnakeHead() {
@@ -302,6 +309,6 @@ function checkBoundaryCollision() {
 }
 
 // add one extra snake body part, for fixing snake graphics
-// since with only head it looks like cutted head only
+// since with only head it looks like cut head only
 snake.addBodySegment();
 Globals.score = 0;
