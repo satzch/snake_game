@@ -9,7 +9,7 @@ To get a local copy up and running, follow these simple steps.
 1. **Clone the repo**
 
     ```bash
-    git clone https://github.com/yourusername/snake-game.git
+    git clone https://github.com/satzch/snake_game.git
     ```
 
 2. **Open the `index.html` file**
@@ -34,7 +34,9 @@ To get a local copy up and running, follow these simple steps.
 
 ## Credits
 
-- Snake sprite and food icon: [Artist Name] ([Source Website](https://example.com))
-- Background music: [Composer Name] ([Source Website](https://example.com))
+- Board PNGs: [Designed by pch.vector] ([Freepik](http://www.freepik.com))
+- Play/Pause Icon: ([Icons8](https://icons8.com))
+- Background Leaves: ([Pngtree](https://pngtree.com/))
+- Font: ([DaFont](https://www.dafont.com/))
 
 All artwork and resources used in this project are free to use under the respective licenses provided by the creators.
