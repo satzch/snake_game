@@ -18,6 +18,10 @@ To get a local copy up and running, follow these simple steps.
    - You can open the file directly in a web browser.
    - Or go to the file in your file browser and double click to open it in your default browser or right click and select the desired browser to open with.
 
+## Screenshot
+
+![Screenshot of game in full screen mode](assets/Screenshot.png)
+
 ## How to Play
 
 - Use the arrow keys on your keyboard to move the snake.
