@@ -45,7 +45,7 @@ To get a local copy up and running, follow these simple steps.
 
 ## Credits
 
-- Board PNGs: [Designed by pch.vector] ([Freepik](http://www.freepik.com))
+- Wooden Board PNGs: [Designed by pch.vector] ([Freepik](http://www.freepik.com))
 - Play/Pause Icon: ([Icons8](https://icons8.com))
 - Background Leaves: ([Pngtree](https://pngtree.com/))
 - Font: ([DaFont](https://www.dafont.com/))
