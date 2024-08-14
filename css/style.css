@@ -2,6 +2,10 @@
     margin: 0;
     border: 0;
     box-sizing: border-box;
+    user-select: none; /* Prevent text selection */
+    -webkit-user-select: none; /* For Safari */
+    -moz-user-select: none; /* For Firefox */
+    -ms-user-select: none; /* For Internet Explorer/Edge */
 }
 
 @font-face {
