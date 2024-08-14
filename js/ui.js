@@ -12,7 +12,7 @@ const settings_window_menu_option = document.getElementById("ui-menu-option-sett
 const credits_window_menu_option = document.getElementById("ui-menu-option-credits");
 const settings_close_btn = document.getElementById("settings-options-close");
 const credits_close_btn = document.getElementById("credits-close");
-const settings_option_sound = document.getElementById("settings-options-sound");
+// const settings_option_sound = document.getElementById("settings-options-sound");
 const settings_option_grid = document.getElementById("settings-options-grid");
 const game_over_screen = document.getElementById("game-over-screen");
 const game_over_screen_score = document.getElementById("game-over-score-points");
@@ -70,9 +70,9 @@ credits_window_menu_option.addEventListener("click", () => {
 });
 credits_close_btn.addEventListener("click", toggleCreditsWindow);
 
-settings_option_sound.addEventListener("change", (e) => {
-    Settings.volume = e.target.value;
-});
+// settings_option_sound.addEventListener("change", (e) => {
+//     Settings.volume = e.target.value;
+// });
 
 settings_option_grid.addEventListener("click", (e) => {
     Settings.gridOn = settings_option_grid.checked;
