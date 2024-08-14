@@ -2,6 +2,8 @@
 
 A classic Snake game built using HTML5 Canvas and JavaScript. Control the snake using arrow keys to eat the food, grow longer, and try not to run into the walls or yourself!
 
+Note: Looks best in 16:9 aspect ratio screens
+
 ## Installation
 
 To get a local copy up and running, follow these simple steps.
