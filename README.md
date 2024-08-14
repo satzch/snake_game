@@ -5,6 +5,10 @@ A classic Snake game built using HTML5 Canvas and JavaScript. Control the snake 
 Note: Looks best in 16:9 aspect ratio screens
 Note: Only for desktop or large screens not for smartphones. (You can try it in smartphone if you connect a keyboard to it and browse the site in landscape mode)
 
+## Live Website
+
+[Try it here](https://satzch.github.io/snake_game/)
+
 ## Installation
 
 To get a local copy up and running, follow these simple steps.
