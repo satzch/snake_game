@@ -35,7 +35,7 @@ function gameLoop()
     if (Globals.gameOver) {
         pauseGame();
         play_pause_btn.removeEventListener("click", togglePausePlay);
-        window.removeEventListener("keydown", keyPressHandler);
+        window.removeEventListener("keydown", debounceKeyHandler);
         toggleGameOverScreen();
         updateGameOverScreenScore();
     }
@@ -78,7 +78,7 @@ function restartGame() {
     Globals.continueGame = false;
     Globals.gameOver = false;
     play_pause_btn.addEventListener("click", togglePausePlay);
-    window.addEventListener("keydown", keyPressHandler);
+    window.addEventListener("keydown", debounceKeyHandler);
     gameLoop();
 }
 

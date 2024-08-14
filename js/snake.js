@@ -278,7 +278,17 @@ function keyPressHandler(e) {
     
     if (e.code == "Space") togglePausePlay();
 }
-window.addEventListener("keydown", keyPressHandler);
+
+let debounceTime = 150;
+let lastKeyPressTime = 0;
+function debounceKeyHandler(event) {
+    const now = Date.now();
+    if (now - lastKeyPressTime > debounceTime) {
+        lastKeyPressTime = now;
+        keyPressHandler(event);
+    }
+}
+window.addEventListener("keydown", debounceKeyHandler);
 
 
 // checks for collision between two entities with pos and size attributes
