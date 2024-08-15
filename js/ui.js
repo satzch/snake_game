@@ -6,6 +6,7 @@ const score = document.getElementById("score-points");
 const play_pause_btn = document.getElementById("ui-board-play");
 const play_img = document.getElementById("play-img");
 const pause_img = document.getElementById("pause-img");
+const replay_img = document.getElementById("replay-img");
 const settings_window = document.getElementById("ui-settings");
 const credits_window = document.getElementById("ui-credits");
 const settings_window_menu_option = document.getElementById("ui-menu-option-settings");
@@ -38,8 +39,12 @@ function toggleCreditsWindow() {
     credits_window.classList.toggle("hide");
 }
 
-function toggleGameOverScreen() {
-    game_over_screen.classList.toggle("hide");
+function addGameOverScreen() {
+    game_over_screen.classList.remove("hide");
+}
+
+function removeGameOverScreen() {
+    game_over_screen.classList.add("hide");
 }
 
 function updateGameOverScreenScore() {
@@ -58,14 +63,29 @@ function pauseGame() {
     pause_img.classList.add("hide");
 }
 
+function addRestartBtn() {
+    play_img.classList.add("hide");
+    pause_img.classList.add("hide");
+    replay_img.classList.remove("hide");
+}
+
+function removeRestartBtn() {
+    play_img.classList.remove("hide");
+    pause_img.classList.add("hide");
+    replay_img.classList.add("hide");
+}
+
 // handle restarting the game
 function restartGame() {
-    toggleGameOverScreen();
+    removeGameOverScreen();
+    removeRestartBtn();
     resetSnake();
     Globals.score = 0;
     Globals.continueGame = false;
     Globals.gameOver = false;
-    play_pause_btn.addEventListener("click", togglePausePlay);
+    setTimeout(() => {
+        play_pause_btn.addEventListener("click", togglePausePlay);
+    }, 300);
     window.addEventListener("keydown", debounceKeyHandler);
     gameLoop();
 }
@@ -93,6 +113,7 @@ settings_option_grid.addEventListener("click", (e) => {
     draw();
 });
 
-game_over_screen_close.addEventListener("click", toggleGameOverScreen);
+game_over_screen_close.addEventListener("click", removeGameOverScreen);
 
 game_over_screen_restart.addEventListener("click", restartGame);
+replay_img.addEventListener("click", restartGame);
