@@ -76,6 +76,7 @@ credits_close_btn.addEventListener("click", toggleCreditsWindow);
 
 settings_option_grid.addEventListener("click", (e) => {
     Settings.gridOn = settings_option_grid.checked;
+    draw();
 });
 
 game_over_screen_close.addEventListener("click", toggleGameOverScreen);

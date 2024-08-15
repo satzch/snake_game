@@ -3,32 +3,21 @@ let timeoutId;
 
 function gameLoop()
 {
-    // clear screen  
-    ctx.clearRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-    // console.log("refresh")
-    
-    // draw the grid
-    if (Settings.gridOn) drawGrid("black");
-    
-    // update and draw the snake
+    // update the snake properties
     if (!Globals.gameOver) snake.update();
     let temp = snake;
-    temp.draw();
     while (temp.next != null) {
         temp = temp.next;
         if (!Globals.gameOver)
             temp.update();
-        temp.draw();
     }
-    snake.draw() // to keep snake head on top after collision
+
+    // draw the frame
+    draw();
 
     // check for game over state
     Globals.gameOver = checkSnakeBodyCollision(snake) || checkBoundaryCollision();
 
-    // update and draw the food
-    food.checkCollision();
-    food.draw();
-    
     // update the UI
     updateUI();
 
@@ -63,6 +52,29 @@ function pauseLoop() {
     if (timeoutId) clearTimeout(timeoutId);
     if (animationFrameId) cancelAnimationFrame(animationFrameId);
     animationFrameId = requestAnimationFrame(pauseLoop);
+}
+
+// draws the frame
+function draw() {
+    // clear screen  
+    ctx.clearRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    // console.log("refresh")
+    
+    // draw the grid
+    if (Settings.gridOn) drawGrid("black");
+    
+    // update and draw the snake
+    let temp = snake;
+    temp.draw();
+    while (temp.next != null) {
+        temp = temp.next;
+        temp.draw();
+    }
+    snake.draw() // to keep snake head on top after collision
+
+    // update and draw the food
+    food.checkCollision();
+    food.draw();
 }
 
 gameLoop();
