@@ -28,8 +28,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* min-width: 100vw; */
-    /* min-height: 100vh; */
     width: min(100%, calc(16/9 * 100vh));
     max-height: 100%;
     object-fit: contain;
@@ -39,7 +37,7 @@ body {
 }
 
 #canvas {
-    border: 5px solid black;
+    border: min(0.5vw, 5px) solid black;
     width: 52%;
 }
 
@@ -102,12 +100,13 @@ body {
     width: 100%;
     height: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     z-index: 5;
 }
 
 #ui-board-play {
+    margin-left: min(2vw, 2vh);
     width: min(20%, 100px);
 }
 
@@ -128,7 +127,7 @@ body {
     width: min(80%, 350px);
     font-family: lonely-coffee;
     font-weight: bold;
-    font-size: min(4vw, 4em);
+    font-size: min(3vw, 4vh);
 }
 
 
@@ -142,7 +141,7 @@ body {
 
 #ui-controls-box {
     position: absolute;
-    bottom: 6vh;
+    bottom: min(6vw, 6vh);
     left: -5px;
     width: min(70%);
     height: 80%;
@@ -164,12 +163,12 @@ body {
 
 #ui-controls-heading {
     position: relative;
-    font-size: min(3vw, 3em);
+    font-size: min(3vw, 5vh);
 }
 
 .ui-controls-info {
     margin: min(1.8vw, 1.8em) 0;
-    font-size: min(1.5vw, 1.5em);
+    font-size: min(1.5vw, 2.5vh);
     text-shadow: 0 0 5px white;
 }
 
@@ -184,8 +183,8 @@ body {
 
 #ui-menu-box {
     position: absolute;
-    bottom: 4vw;
-    right: 4vw;
+    bottom: min(4vw, 8vh);
+    right: min(4vw, 8vh);
     width: min( 50%, 400px);
     height: 20%;
     transform: rotate(-20deg);
@@ -204,7 +203,7 @@ body {
     align-items: center;
     justify-content: center ;
     font-family: lonely-coffee;
-    font-size: min( 2vw, 2em);
+    font-size: min(3vw, 4vh);
 }
 
 .ui-menus {
@@ -228,14 +227,14 @@ body {
 
 #ui-settings-heading {
     position: relative;
-    font-size: min(5vw, 2.5em);
-    top: -0.5vw;
+    font-size: min(4vw, 6vh);
+    margin-top: max(-1vw, -2vh);
 }
 
 #ui-settings-content > img {
     position: absolute;
-    width: min(40%, 60%);
-    height: min(60%, 80%);
+    width: 40%;
+    height: 60%;
     z-index: -1;
 }
 
@@ -246,11 +245,11 @@ body {
     justify-content: center;
     align-items: center;
     font-family: lonely-coffee;
-    font-size: min(3vw, 3em);
+    font-size: min(3vw, 4vh);
 }
 
 .settings-options {
-    margin: 2vh;
+    margin: min(1vw, 2vh);
     width: 30%;
     display: flex;
     align-items: center;
@@ -271,18 +270,18 @@ body {
 .settings-options > input[type="checkbox"] {
     appearance: none;
     position: relative;
-    width: min(3vw, 3em);
-    height: min(3vw, 3em);
-    border: 0.5vw solid black;
+    width: min(3vw, 5vh);
+    height: min(3vw, 5vh);
+    border: min(0.5vw, 8px) solid black;
     color: black;
-    border-radius: 0.5vw;
+    border-radius: min(0.5vw, 4px);
     vertical-align: -2px;
 }
 
 .settings-options > input[type="checkbox"]::before {
     content: "✔️";
     position: absolute;
-    font-size: min(3.5vw, 3.5em);
+    font-size: min(3.5vw, 5vh);
     left: -0.25vw;
     bottom: -0.2vw;
     visibility: hidden;
@@ -298,8 +297,8 @@ body {
 
 #settings-options-close {
     margin-top: 2%;
-    border: 0.5vw solid black;
-    border-radius: 0.8vw;
+    border: min(0.5vw, 8px) solid black;
+    border-radius: min(0.8vw, 8px);
     padding: 1%;
     text-align: center;
 }
@@ -317,14 +316,14 @@ body {
 
 #ui-credits-heading {
     position: relative;
-    font-size: min(4vw, 2.5em);
-    top: -3vw;
+    font-size: min(4vw, 6vh);
+    top: max(-3vw, -4vh);
 }
 
 #ui-credits-content > img {
     position: absolute;
-    width: max(40%, 60%);
-    height: max(60%, 80%);
+    width: 60%;
+    height: 80%;
     z-index: -1;
 }
 
@@ -335,7 +334,7 @@ body {
     justify-content: center;
     align-items: center;
     font-family: lonely-coffee;
-    font-size: min(2vw, 2em);
+    font-size: min(2vw, 3vh);
 }
 
 .ui-credits-section {
@@ -344,8 +343,8 @@ body {
 
 #credits-close {
     margin-top: 1vw;
-    border: 0.5vw solid black;
-    border-radius: 0.8vw;
+    border: min(0.5vw, 10px) solid black;
+    border-radius: min(0.8vw, 10px);
     padding: 0.5vw;
 }
 
@@ -365,14 +364,14 @@ body {
 
 #game-over-screen-heading {
     position: relative;
-    font-size: min(4vw, 2.5em);
-    top: -0.5em;
+    font-size: min(4vw, 5vh);
+    top: max(-0.5em, 0.5vw);
 }
 
 #game-over-screen-content > img {
     position: absolute;
-    width: max(40%, 50%);
-    height: max(50%, 60%);
+    width: 50%;
+    height: 60%;
     z-index: -1;
 }
 
@@ -383,11 +382,11 @@ body {
     justify-content: center;
     align-items: center;
     font-family: lonely-coffee;
-    font-size: min(4vw, 2em);
+    font-size: min(3vw, 4vh);
 }
 
 #game-over-screen-content > div {
-    margin: 2vh 0;
+    margin: min(2vw, 2vh) 0;
 }
 
 #game-over-screen-btns {
@@ -399,9 +398,9 @@ body {
 }
 
 #game-over-screen-close, #game-over-screen-restart {
-    border: 0.5vw solid black;
-    border-radius: 0.8vw;
-    padding: 1vw;
+    border: min(0.5vw, 6px) solid black;
+    border-radius: min(0.8vw, 10px);
+    padding: min(1vw, 1vh, 20px);
 }
 
 #game-over-screen-close:hover, #game-over-screen-restart:hover {
