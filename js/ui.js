@@ -17,6 +17,7 @@ const settings_option_grid = document.getElementById("settings-options-grid");
 const game_over_screen = document.getElementById("game-over-screen");
 const game_over_screen_score = document.getElementById("game-over-score-points");
 const game_over_screen_close = document.getElementById("game-over-screen-close");
+const game_over_screen_restart = document.getElementById("game-over-screen-restart");
 
 
 // this function will be called each frame
@@ -56,6 +57,18 @@ function pauseGame() {
     pause_img.classList.add("hide");
 }
 
+// handle restarting the game
+function restartGame() {
+    toggleGameOverScreen();
+    resetSnake();
+    Globals.score = 0;
+    Globals.continueGame = false;
+    Globals.gameOver = false;
+    play_pause_btn.addEventListener("click", togglePausePlay);
+    window.addEventListener("keydown", debounceKeyHandler);
+    gameLoop();
+}
+
 play_pause_btn.addEventListener("click", togglePausePlay);
 
 settings_window_menu_option.addEventListener("click", () => {
@@ -80,3 +93,5 @@ settings_option_grid.addEventListener("click", (e) => {
 });
 
 game_over_screen_close.addEventListener("click", toggleGameOverScreen);
+
+game_over_screen_restart.addEventListener("click", restartGame);

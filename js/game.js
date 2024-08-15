@@ -79,21 +79,7 @@ function draw() {
 
 gameLoop();
 
-const game_over_screen_restart = document.getElementById("game-over-screen-restart");
-game_over_screen_restart.addEventListener("click", restartGame);
-
-// handle restarting the game
-function restartGame() {
-    toggleGameOverScreen();
-    resetSnake();
-    Globals.score = 0;
-    Globals.continueGame = false;
-    Globals.gameOver = false;
-    play_pause_btn.addEventListener("click", togglePausePlay);
-    window.addEventListener("keydown", debounceKeyHandler);
-    gameLoop();
-}
-
+// resets the snake properties for new game
 function resetSnake() {
     snake.next = null;
     snake.tail = null;
