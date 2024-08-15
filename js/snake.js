@@ -247,7 +247,7 @@ const food = {
         if (checkCollisionBetween(this, snake))
         {
             this.updatePos();
-            console.log("Collision at: ", this.pos.x, " ", this.pos.y);
+            // console.log("Collision at: ", this.pos.x, " ", this.pos.y);
             snake.addBodySegment();
         }
     }
