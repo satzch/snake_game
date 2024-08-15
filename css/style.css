@@ -17,9 +17,25 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* for making it 16:9 aspect ratio, even if original device aspect ratio is different*/
-    height: calc(9/16 * 100vw); 
+    width: 100vw;
+    height: 100vh;
     overflow: hidden;
+    background-color: black;
+}
+
+#game-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* min-width: 100vw; */
+    /* min-height: 100vh; */
+    width: min(100%, calc(16/9 * 100vh));
+    max-height: 100%;
+    object-fit: contain;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    background-color: white;
 }
 
 #canvas {
@@ -126,10 +142,10 @@ body {
 
 #ui-controls-box {
     position: absolute;
-    bottom: 0;
+    bottom: 6vh;
     left: -5px;
     width: min(70%);
-    height: 70%;
+    height: 80%;
     transform: rotate(-10deg);
     font-family: lonely-coffee;
     padding: 10%;
@@ -152,7 +168,7 @@ body {
 }
 
 .ui-controls-info {
-    margin: min(2vw, 2em) 0;
+    margin: min(1.8vw, 1.8em) 0;
     font-size: min(1.5vw, 1.5em);
     text-shadow: 0 0 5px white;
 }

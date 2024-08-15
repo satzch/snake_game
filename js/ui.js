@@ -18,6 +18,7 @@ const game_over_screen = document.getElementById("game-over-screen");
 const game_over_screen_score = document.getElementById("game-over-score-points");
 const game_over_screen_close = document.getElementById("game-over-screen-close");
 const game_over_screen_restart = document.getElementById("game-over-screen-restart");
+const game_container = document.getElementById("game-container");
 
 
 // this function will be called each frame
