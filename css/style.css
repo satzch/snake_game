@@ -439,13 +439,17 @@ body {
 }
 
 .dpad-btn {
+    position: relative;
     width: 30%;
     height: 33%;
-    /* background-color: blue; */
-    margin: 10px;
-    background-image: url(../assets/arrow.png);
-    background-repeat: no-repeat;
-    background-size: cover;
+}
+
+.dpad-btn > img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 120%;
+    height: 95%;
 }
 
 #dpad-up {
