@@ -42,24 +42,15 @@ function addDpadListeners() {
     const dpad_right = document.getElementById("dpad-right");
 
     dpad_up.addEventListener("click", () => {
-        if (!(snake.vel.y > 0) || snake.length == 1) {
-            snake.setVel(0, -snake.speed);
-        }
+        debounceKeyHandler({key: "ArrowUp"});
     });
     dpad_down.addEventListener("click", () => {
-        if (!(snake.vel.y < 0) || snake.length == 1) {
-            snake.setVel(0, snake.speed);
-        }
+        debounceKeyHandler({key: "ArrowDown"});
     });
     dpad_left.addEventListener("click", () => {
-        if (!(snake.vel.x > 0) || snake.length == 1) {
-            snake.setVel(-snake.speed, 0);   
-        }
+        debounceKeyHandler({key: "ArrowLeft"});
     });
     dpad_right.addEventListener("click", () => {
-        if (!(snake.vel.x < 0) || snake.length == 1) {
-            snake.setVel(snake.speed, 0);
-        }
+        debounceKeyHandler({key: "ArrowRight"});
     });
-
 }
