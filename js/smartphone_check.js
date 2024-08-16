@@ -27,6 +27,10 @@ function toggleSmartphoneMode() {
         rotate_screen.classList.remove("hide");
         dpad.classList.remove("hide");
         ui_keyboard_instructions.classList.add("hide");
+
+        // toggleFullscreen on any event, here doing it on click
+        document.addEventListener("click", fullscreenMode);
+
         // add event listeners to dpad if device is smartphone
         // otherwise it will be hidden anyways
         addDpadListeners();
@@ -70,3 +74,28 @@ function addDpadListeners() {
         debounceKeyHandler({key: "ArrowRight"});
     });
 }
+
+
+// toggle to fullscreen mode using Javascript Fullscreen API
+function fullscreenMode(event) {
+    if (document.documentElement.requestFullscreen) {
+      document.documentElement.requestFullscreen();
+    } else if (document.documentElement.webkitRequestFullscreen) {
+      document.documentElement.webkitRequestFullscreen();
+    } else if (document.documentElement.msRequestFullscreen) {
+      document.documentElement.msRequestFullscreen();
+    }
+
+    document.removeEventListener("click", fullscreenMode);
+}
+
+// close full screen mode, currently not needed
+function closeFullscreen() {
+    if (document.documentElement.exitFullscreen) {
+      document.documentElement.exitFullscreen();
+    } else if (document.documentElement.webkitExitFullscreen) {
+      document.documentElement.webkitExitFullscreen();
+    } else if (document.documentElement.msExitFullscreen) {
+      document.documentElement.msExitFullscreen();
+    }
+  }
