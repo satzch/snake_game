@@ -441,8 +441,23 @@ body {
 .dpad-btn {
     width: 30%;
     height: 33%;
-    background-color: blue;
+    /* background-color: blue; */
     margin: 10px;
+    background-image: url(../assets/arrow.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#dpad-up {
+    transform: rotate(-90deg);
+}
+
+#dpad-down {
+    transform: rotate(90deg);
+}
+
+#dpad-left {
+    transform: rotate(180deg);
 }
 
 
