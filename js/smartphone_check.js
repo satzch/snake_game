@@ -1,13 +1,18 @@
 
+// checks if device is touch device
+function isTouchDevice() {
+    const touch = 
+        'ontouchstart' in window ||
+        navigator.maxTouchPoints > 0;
+    
+    return touch;
+}
+
 // checks if the device is smartphone by checking userAgent
 function isSmartphone() {
     const isSmartphoneUA = /android|Android|iPhone|iPod|iPad/.test(navigator.userAgent);
     
-    const isTouchDevice = 
-        'ontouchstart' in window ||
-        navigator.maxTouchPoints > 0;
-    
-    return (isTouchDevice && isSmartphoneUA)
+    return (isTouchDevice() && isSmartphoneUA)
 }
 
 // required dom elements for smartphone controls
