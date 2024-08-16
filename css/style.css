@@ -207,7 +207,7 @@ body {
 }
 
 .ui-menus {
-    margin: 1vh 0;
+    margin: min(1vh, 1vw) 0;
 }
 
 .ui-menus:hover {
@@ -405,4 +405,47 @@ body {
 
 #game-over-screen-close:hover, #game-over-screen-restart:hover {
     text-shadow: 0 0 0.5vw white;
+}
+
+
+
+
+/******* Rotate Smartphone Screen ********/
+#rotate-smartphone {
+    position: absolute;
+}
+
+@media (max-width: 600px) and (orientation: portrait) {
+    #rotate-smartphone {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: wheat;
+        z-index: 20;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    #rotate-smartphone img {
+        width: min(50vh, 50vw);
+        height: min(50vh, 50vw);
+        animation: rotate 2s ease-in-out 1s infinite;
+        transform: rotate(45deg);
+    }
+
+    @keyframes rotate {
+        0% {
+            transform: rotate(45deg);
+        }
+        75% {
+            transform: rotate(-45deg);
+        }
+        100% {
+            transform: rotate(45deg);
+        }
+    }
+
 }
