@@ -59,8 +59,10 @@ function togglePausePlay() {
 
 function pauseGame() {
     Globals.continueGame = false;
-    play_img.classList.remove("hide");
-    pause_img.classList.add("hide");
+    if (!Globals.gameOver) {
+        play_img.classList.remove("hide");
+        pause_img.classList.add("hide");
+    }
 }
 
 function addRestartBtn() {
