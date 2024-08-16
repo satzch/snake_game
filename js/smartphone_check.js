@@ -1,3 +1,4 @@
+
 // checks if the device is smartphone by checking userAgent
 function isSmartphone() {
     const isSmartphoneUA = /android|Android|iPhone|iPod|iPad/.test(navigator.userAgent);
@@ -24,6 +25,7 @@ function toggleSmartphoneMode() {
         dpad.classList.add("hide");
         ui_keyboard_instructions.classList.remove("hide");
     }
+    addDpadListeners();
 }
 
 toggleSmartphoneMode();
@@ -31,3 +33,33 @@ toggleSmartphoneMode();
 window.addEventListener("resize", () => {
     toggleSmartphoneMode();
 })
+
+
+function addDpadListeners() {
+    const dpad_up = document.getElementById("dpad-up");
+    const dpad_down = document.getElementById("dpad-down");
+    const dpad_left = document.getElementById("dpad-left");
+    const dpad_right = document.getElementById("dpad-right");
+
+    dpad_up.addEventListener("click", () => {
+        if (!(snake.vel.y > 0) || snake.length == 1) {
+            snake.setVel(0, -snake.speed);
+        }
+    });
+    dpad_down.addEventListener("click", () => {
+        if (!(snake.vel.y < 0) || snake.length == 1) {
+            snake.setVel(0, snake.speed);
+        }
+    });
+    dpad_left.addEventListener("click", () => {
+        if (!(snake.vel.x > 0) || snake.length == 1) {
+            snake.setVel(-snake.speed, 0);   
+        }
+    });
+    dpad_right.addEventListener("click", () => {
+        if (!(snake.vel.x < 0) || snake.length == 1) {
+            snake.setVel(snake.speed, 0);
+        }
+    });
+
+}
