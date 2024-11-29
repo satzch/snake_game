@@ -279,7 +279,7 @@ function keyPressHandler(e) {
     if (e.code == "Space") togglePausePlay();
 }
 
-let debounceTime = 130;
+let debounceTime = 120;
 let lastKeyPressTime = 0;
 function debounceKeyHandler(event) {
     const now = Date.now();

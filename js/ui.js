@@ -167,3 +167,9 @@ window.onload = function() {
 
     updateProgress();
 };
+
+
+// restart keyboard key
+window.addEventListener("keydown", (event) => {
+    if (event.code == "KeyR") restartGame();
+});
