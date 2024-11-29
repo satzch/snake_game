@@ -119,3 +119,51 @@ game_over_screen_close.addEventListener("click", removeGameOverScreen);
 
 game_over_screen_restart.addEventListener("click", restartGame);
 replay_img.addEventListener("click", restartGame);
+
+console.log(performance)
+
+// loading screen
+
+window.onload = function() {
+    const loading_screen = document.getElementById("loading-screen");
+    const progress_bar = document.getElementById("loading-progress-bar");
+    const loading_percent_text = document.getElementById("loading-percent-text");
+
+
+    // Simulate loading progress based on performance data
+    let updateProgress = function() {
+        let totalResources = performance.getEntriesByType("resource").length;
+        let loadedResources = 0;
+
+        // Count resources that have finished loading
+        performance.getEntriesByType("resource").forEach((resource) => {
+            if (resource.responseStart > 0) {
+                loadedResources++;
+            }
+        });
+
+        // Calculate the percentage of resources loaded
+        let percent = Math.round((loadedResources / totalResources) * 100);
+
+        progress_bar.style.width = percent + '%';
+        loading_percent_text.innerHTML = percent + '%';
+
+        // If all resources are loaded, hide the loading screen
+        if (percent >= 100) {
+            percent = 100;
+            setTimeout(() => {
+                loading_screen.classList.add("hide");
+            }, 500);
+        }
+    };
+
+    // Update progress every 10ms
+    let interval = setInterval(() => {
+        updateProgress();
+        if (performance.timing.loadEventEnd > 0) {
+            clearInterval(interval);
+        }
+    }, 10);
+
+    updateProgress();
+};
